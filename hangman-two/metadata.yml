@@ -10,7 +10,7 @@
 version: "beta1"
 name: "hangman-two"
 author: "itsc0rg1"
-flag: "CTF{h4ngmanr0ulett3w1n}"
+flag: "DUOC{persistencia_cookie_estado_58271}"
 description: |
   Play hangman and guess the random string to get the flag.
 value: 1000 # Leave this as 1000 unless you have a reason to change it

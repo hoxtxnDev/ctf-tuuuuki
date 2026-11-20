@@ -1,26 +1,26 @@
-JPEG compression stores pixels in 8x8 blocks. This means that even if the image size isn't a multiple of 8 in width or height it actually stores information about the extra "slack" pixels. Editors use many different strategies for padding out the image to a muliple of 8. In the provided flag the strategy used is just to extend the last row or column of pixels however many additional rows/columns are needed.
+La compresión JPEG almacena los píxeles en bloques MCU de 8x8. Esto significa que, incluso cuando las dimensiones visibles de una imagen no son múltiplos de 8 en ancho o alto, el flujo JPEG almacena información sobre los píxeles adicionales de holgura ("slack"). Los editores gráficos usan distintas estrategias para rellenar el bloque hasta un múltiplo de 8; en la imagen proporcionada simplemente se extiende la última fila o columna de píxeles.
 
-The slackblock-steg program makes use of these extra hidden pixels to encode the key and message in binary, one bit per pixel, using black for 0 and white for 1.
+El programa `slackblock-steg` aprovecha estos píxeles ocultos adicionales para codificar la clave y el mensaje en binario, a razón de un bit por píxel (negro para 0 y blanco para 1).
 
-To solve, first extend the image size out to the true padded size:
+Para resolver el desafío, primero se expanden las dimensiones declaradas en la cabecera SOF del JPEG hasta el tamaño real múltiplo de 8:
 
     $ ./jpeg_uncrop.py ../distfiles/flag.jpg
     Width: 874, Height: 605
 
-Then you can read the encoded key and message directly out of the pixels.
+Luego se pueden leer directamente la clave y el mensaje codificados en los píxeles de holgura:
 
 ![hidden pixels](uncropped_zoom.png)
 
-The data is encoded as:
+Los datos están estructurados como:
 
-* 2 bytes: '88' (the two ASCII letters in binary)
-* 1 byte: key length
-* n bytes: key bytes
-* 1 byte: message length
-* n bytes: message bytes
+* 2 bytes: `'88'` (los dos caracteres ASCII en binario)
+* 1 byte: longitud de la clave
+* n bytes: bytes de la clave
+* 1 byte: longitud del mensaje
+* n bytes: bytes del mensaje
 
-The key to the image is the flag. One way to solve is to just black-out the 8 key-size bits and then to write a longer length for the following byte so that the tool will accept a blank key and decode the remaining partial key + message length + message as the message. This will display the flag (minus the C which was overwritten) and the mesage together.
+La clave de la imagen es la flag:
 
 Flag:
 
-CTF{slack_space_not_just_for_filesystems}
+DUOC{relleno_bloques_dimension_72518}

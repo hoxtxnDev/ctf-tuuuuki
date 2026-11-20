@@ -18,7 +18,7 @@ def getFlag():
     # To handle load balancer 
     if request.method == 'GET':
         return "Server is up, challenge requires post", 200
-    flag = "CTF{S33dth3tw1st3r}"
+    flag = "DUOC{prediccion_semilla_aleatoria_39846}"
     # Post request
     id_token = request.form.get('token')
     if id_token:

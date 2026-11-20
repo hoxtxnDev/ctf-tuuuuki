@@ -1,1 +1,1 @@
-CTF{never_trust_a_black_box}
+DUOC{factores_primos_compartidos_38516}

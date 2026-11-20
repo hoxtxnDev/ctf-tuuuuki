@@ -10,7 +10,7 @@
 version: "beta1"
 name: "go-back"
 author: "ron"
-flag: "CTF{told-you-its-not-timing}"
+flag: "DUOC{oraculo_codigo_retorno_83715}"
 description: |
   Can you figure out how to reveal the flag from this application?
 value: 1000 # Leave this as 1000 unless you have a reason to change it

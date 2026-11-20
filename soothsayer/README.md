@@ -1,38 +1,40 @@
+# Desafío CTF: `soothsayer` — Soothsayer
 
-## Firebase - setup notes 
-* On Firebase Console - choose authentication 
-* Enable Anonymous provider 
-* On Firebase Console - choose Firestore Database
-* Start a collection - `users`
-* Update the `Rules` to allow the app to talk to it
+## 1. Introducción
+Aplicación Android conectada a Firebase Firestore y un servidor Python donde el jugador debe acertar 30 predicciones binarias consecutivas generadas mediante Mersenne Twister.
+- **Categoría:** Seguridad Móvil (Android) / Criptografía
+
+## 2. Objetivo
+Analizar vulnerabilidades de control de acceso y exposición de estado cuando la semilla del generador pseudoaleatorio (PRNG) y el puntaje se almacenan en documentos de Firestore accesibles o manipulables desde el cliente mediante Frida.
+
+## 3. Requisitos
+- Python 3 (`numpy`, `requests`, `firebase-admin`) o emulador Android con `adb` y `frida`.
+
+## 4. Instrucciones de ejecución
+1. Para levantar el entorno del desafío localmente con Docker Compose:
+   ```bash
+   cd soothsayer/challenge && docker compose up --build
+   ```
+2. Archivos distribuidos al participante: `distfiles/soothsayer.apk`.
+
+## 5. Metodología de resolución
+Instrumentar la aplicación Android con Frida (`solver.js`) o consultar la semilla almacenada en el documento del usuario en Firestore para precalcular las 30 elecciones de `numpy.random` y solicitar `/get-flag`.
+
+## 6. Sistema de puntuación
+- **Puntaje base del desafío:** `1000` puntos (configurado en `metadata.yml`).
+- El desafío otorga el puntaje al validar la cadena de respuesta exacta en la plataforma del CTF.
+
+## 7. Formato de flags
+La flag de este desafío sigue el estándar institucional del laboratorio:
+```text
+DUOC{palabra_clave_XXXXX}
 ```
-rules_version = '2';
 
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /users/{uid} {
-      allow create: if request.auth != null;
-      allow read, update, delete: if request.auth != null && request.auth.uid == uid;
-    }
-  }
-}
-```
+## 8. Consideraciones de seguridad
+- Este ejercicio debe ejecutarse exclusivamente dentro del entorno de laboratorio aislado o sobre los archivos provistos en `distfiles/`.
+- No utilices las técnicas estudiadas fuera de entornos educativos expresamente autorizados.
 
-## App  - notes 
-* Select `Add app` on console
-* Choose `Android`
-* Enter `Android package name` as `com.example.soothsayer`
-* Enter `App nickname` as `Soothsayer`
-* Click `Register App`
-* Download the config file - `google-services.json`
-* In Android Studio, add it to the `app` directory
-* In Android Studio, `Build > Build App Bundle(s) / APK (s) > Build APK`
-* From the project directory `app > build > outputs > apk > debug` copy app-debug.apk 
-* Rename it to `soothsayer.apk`
-* Move it to `distfiles`
-
-
-## Server - deployment notes 
-* Export key for server as `soothsayer-firebase.json`
-* Upload the key to the server 
-
+## 9. Créditos y referencias
+- **Autor original:** `itsc0rg1`
+- **Adaptación y localización pedagógica:** Laboratorio Educativo de Ciberseguridad DUOC.
+- **Documentación de solución para instructores:** [`solution/README.md`](solution/README.md)

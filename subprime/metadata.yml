@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'subprime'
 author: 'anshc'
-flag: 'CTF{n0n_0pt!m@l_pR!m3$}'
+flag: 'DUOC{exponente_privado_factorizado_51739}'
 description: |
   Rivest, Shamir, and Adleman think they have it all figured out, don't they?
 value: 1000

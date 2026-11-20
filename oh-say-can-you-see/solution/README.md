@@ -1,7 +1,7 @@
-## `oh-say-can-you-see` -- an AI/ML training data extraction challenge
+## `oh-say-can-you-see` -- desafío de extracción de datos de entrenamiento en IA/ML
 
 
-Players are given a pre-trained keras model. The model can be loaded to see the layers and configuration:
+A los participantes se les entrega un modelo Keras preentrenado (`flag_classifier.keras`). El modelo puede cargarse para inspeccionar sus capas y configuración:
 
     #!/usr/bin/env python3
     
@@ -13,7 +13,7 @@ Players are given a pre-trained keras model. The model can be loaded to see the 
     print(model.get_config())
     model.summary()
 
-This will report the following:
+Esto mostrará la siguiente arquitectura:
 
     {'name': 'sequential', 'trainable': True, 'dtype': {'module': 'keras', 'class_name': 'DTypePolicy', 'config': {'name': 'float32'}, 'registered_name': None}, 'layers': [{'module': 'keras.layers', 'class_name': 'InputLayer', 'config': {'batch_shape': (None, 256, 256, 1), 'dtype': 'float32', 'sparse': False, 'ragged': False, 'name': 'input_layer'}, 'registered_name': None}, {'module': 'keras.layers', 'class_name': 'Conv2D', 'config': {'name': 'conv2d', 'trainable': True, 'dtype': {'module': 'keras', 'class_name': 'DTypePolicy', 'config': {'name': 'float32'}, 'registered_name': None}, 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'valid', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'groups': 1, 'activation': 'relu', 'use_bias': True, 'kernel_initializer': {'module': 'keras.initializers', 'class_name': 'GlorotUniform', 'config': {'seed': None}, 'registered_name': None}, 'bias_initializer': {'module': 'keras.initializers', 'class_name': 'Zeros', 'config': {}, 'registered_name': None}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}, 'registered_name': None, 'build_config': {'input_shape': [None, 256, 256, 1]}}, {'module': 'keras.layers', 'class_name': 'Flatten', 'config': {'name': 'flatten', 'trainable': True, 'dtype': {'module': 'keras', 'class_name': 'DTypePolicy', 'config': {'name': 'float32'}, 'registered_name': None}, 'data_format': 'channels_last'}, 'registered_name': None, 'build_config': {'input_shape': [None, 254, 254, 32]}}, {'module': 'keras.layers', 'class_name': 'Dense', 'config': {'name': 'dense', 'trainable': True, 'dtype': {'module': 'keras', 'class_name': 'DTypePolicy', 'config': {'name': 'float32'}, 'registered_name': None}, 'units': 4, 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'module': 'keras.initializers', 'class_name': 'GlorotUniform', 'config': {'seed': None}, 'registered_name': None}, 'bias_initializer': {'module': 'keras.initializers', 'class_name': 'Zeros', 'config': {}, 'registered_name': None}, 'kernel_regularizer': None, 'bias_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}, 'registered_name': None, 'build_config': {'input_shape': [None, 2064512]}}], 'build_input_shape': (None, 256, 256, 1)}
     Model: "sequential"
@@ -31,11 +31,11 @@ This will report the following:
      Non-trainable params: 0 (0.00 B)
      Optimizer params: 16,516,746 (63.01 MB)
 
-Importantly the input shape is `(None, 256, 256, 1)` meaning 256x256 greyscale images. The details of the middle layers don't matter much except that the model after one convolution layer (and a flattening which just re-shapes the 2d array into a 1d array) the model goes straight to 4 outputs (meaning 4 classes). This is a huge explosion in parameters which allows the model to way over-fit. The model should have simply memorized its inputs. By "inverting" the model to find an input that maximizes an output class the training data can be extracted. In other words, this is an input optimization problem.
+Cabe destacar que la forma de entrada es `(None, 256, 256, 1)`, es decir, imágenes en escala de grises de 256x256 píxeles. Después de una única capa convolucional y un aplanado (`Flatten`), el modelo pasa directamente a una capa densa con 4 salidas (4 clases). Esa explosión de parámetros (más de 8.2 millones de pesos entrenables) provoca un sobreajuste extremo (*overfitting*), haciendo que el modelo memorice sus imágenes de entrenamiento. Al "invertir" el modelo mediante optimización de entrada para maximizar cada clase de salida, es posible reconstruir los datos de entrenamiento.
 
-The general idea is to run gradiant descent on an input until the input maximizes the output for a class. Starting with a blank (black) input is fine. Then add some noise, run prediction, measure the gradiant at each pixel for the desired class, and then adjust the pixels by the gradiant.
+La idea general consiste en ejecutar descenso de gradiente sobre los píxeles de una imagen de entrada inicialmente negra, añadiendo ruido ligero en cada iteración, calculando el gradiente de la pérdida respecto a cada píxel para la clase deseada y ajustando los píxeles en consecuencia.
 
-Here is some code that does just that:
+El siguiente script implementa dicha inversión:
 
     #!/usr/bin/env python3
     
@@ -107,7 +107,7 @@ Here is some code that does just that:
         print(f"Saved: {output_path}")
 
 
-The following 4 images are produced:
+Se generan las siguientes 4 imágenes reconstruidas (correspondientes a la flag estandarizada `DUOC{inversion_gradiente_red_43681}`):
 
 ![class 0](generated_classes/class_0.png) ![class 1](generated_classes/class_1.png) ![class 2](generated_classes/class_2.png) ![class 3](generated_classes/class_3.png)
 

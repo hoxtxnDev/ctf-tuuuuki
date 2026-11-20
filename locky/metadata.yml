@@ -10,7 +10,7 @@
 version: beta1
 name: Locky
 author: Matir/symmetric
-flag: 'make_me_a_secret'
+flag: 'DUOC{apertura_cilindro_fisico_15948}'
 description: |
   This challenge requires being on-site.  Come unlock our challenge lock and
   get a flag!

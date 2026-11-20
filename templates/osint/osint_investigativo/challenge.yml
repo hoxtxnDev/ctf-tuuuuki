@@ -1,0 +1,28 @@
+# Plantilla reutilizable para desafíos de OSINT Investigativo (Correlación / Cronologías)
+version: 'beta1'
+name: 'plantilla-osint-investigativo'
+category: 'OSINT'
+difficulty: 'Avanzado'
+author: 'Equipo Docente Ciberseguridad DUOC'
+# NOTA: Esta es una flag de plantilla (sustituir al clonar para un nuevo evento)
+flag: 'DUOC{operacion_faro_austral_84920}'
+value: 1000
+tags:
+  - 'OSINT'
+  - 'Investigacion'
+  - 'Cronologia'
+  - 'Plantilla'
+description: |
+  [PLANTILLA OSINT INVESTIGATIVO] Correlaciona tres documentos públicos ficticios
+  (un comunicado de prensa, un historial de versiones de repositorio y un acta de
+  licitación abierta) para reconstruir la línea de tiempo, identificar el nombre
+  clave del proyecto filtrado y su folio de expediente de 5 dígitos.
+  Formato esperado: DUOC{<nombre_clave_proyecto>_<folio_expediente>}
+files:
+  - 'evidencias/comunicado_prensa_2026.txt'
+  - 'evidencias/registro_commits_publicos.log'
+  - 'evidencias/acta_licitacion_abierta.csv'
+hints:
+  - 'Nivel 1: Construye una línea de tiempo ordenando las fechas de los tres documentos en evidencias/. Observa qué evento ocurrió el 18 de agosto de 2026.'
+  - 'Nivel 2: En evidencias/registro_commits_publicos.log, identifica el alias del desarrollador y el código interno de proyecto mencionado en el commit de esa misma fecha.'
+  - 'Nivel 3: Cruza el código interno (PRJ-FA-09) con evidencias/acta_licitacion_abierta.csv para obtener el nombre clave ("Operación Faro Austral") y el folio de 5 dígitos (84920).'

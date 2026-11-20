@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'tarnation'
 author: 'symmetric'
-flag: 'CTF{tarrible_format}'
+flag: 'DUOC{ocurrencia_archivo_concatenado_96284}'
 description: |
   Can you help us recover the flag from this old tape backup?
 value: 1000 # Leave this as 1000 unless you have a reason to change it

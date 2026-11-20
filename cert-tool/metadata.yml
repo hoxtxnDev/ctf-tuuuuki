@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'cert-tool'
 author: 'symmetric'
-flag: 'CTF{dont_look_behind_you}'
+flag: 'DUOC{retroceso_relleno_base64_27465}'
 description: |
   OpenSSL is hard so we've made this super easy-to-use cert-tool for you!
 value: 1000 # Leave this as 1000 unless you have a reason to change it

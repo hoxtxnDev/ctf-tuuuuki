@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'block-cipher'
 author: 'symmetric'
-flag: 'CTF{subterrenaceous_hyperencryption_misconfigurate_transmutational_deobfuscation}'
+flag: 'DUOC{codificacion_radix_mixta_84619}'
 description: |
   Try out our new block-cipher encryption tool. Can you decode the secret message?
 value: 1000 # Leave this as 1000 unless you have a reason to change it

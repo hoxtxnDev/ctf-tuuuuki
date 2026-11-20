@@ -1,16 +1,14 @@
-Run `solution.py <challenge-url>` to test if Firebase and server are working. 
+Ejecuta `solution.py <challenge-url>` para verificar el funcionamiento de Firebase y del servidor, y obtener la flag (`DUOC{prediccion_semilla_aleatoria_39846}`).
 
-Run `solution.py` to get the guesses you need for each round and then plug into Android App. 
+Ejecuta `solution.py` sin argumentos para calcular las predicciones de cada ronda a partir de la semilla de Mersenne Twister e ingresarlas en la aplicación Android.
 
-If you would like to generate the guesses for the seed to validate the app, run `solution.py` and then supply the seed. 
-
-If you would like to use the Frida hook to solve the challenge, 
-* Setup an Android Virtual Device with the image `Android 13.0 ('Tiramisu') | arm64 with Google APIs`
-* Install `soothsayer.apk` on it 
+Si deseas utilizar el hook de Frida para resolver el desafío dinámicamente:
+* Configura un dispositivo virtual Android (AVD) con la imagen `Android 13.0 ('Tiramisu') | arm64 with Google APIs`
+* Instala `soothsayer.apk` en el emulador
 * `adb root` 
 * `adb push frida-server /data/local/tmp/frida-server`
 * `adb shell chmod 755 /data/local/tmp/frida-server`
 * `adb shell /data/local/tmp/frida-server &`
 * `frida -U -f com.bsidessf.soothsayer -l solver.js`
-* On the app, click the "Reset" button and then "Get Flag" button 
-* Flag will be printed in the console, the app might crash though :)
+* En la aplicación, pulsa el botón "Reset" y luego el botón "Get Flag"
+* La flag se imprimirá en la consola de Frida (`DUOC{prediccion_semilla_aleatoria_39846}`).

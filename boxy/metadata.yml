@@ -13,7 +13,7 @@ author: symmetric
 
 # REQUIRED
 # Flag for challenge
-flag: "YouCrackedTheCode"
+flag: "DUOC{combinacion_candado_fisico_31749}"
 
 # REQUIRED
 # Description for scoreboard

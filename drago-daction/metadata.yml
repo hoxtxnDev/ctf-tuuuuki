@@ -10,7 +10,7 @@
 version: "beta1"
 name: "drago-daction"
 author: "ron"
-flag: "CTF{file-writing-is-fun}"
+flag: "DUOC{desbordamiento_puntero_archivo_67391}"
 description: |
   Can you exploit this service to read the flag file?
 value: 1000

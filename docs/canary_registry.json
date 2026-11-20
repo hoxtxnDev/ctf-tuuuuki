@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Registro aislado de marcadores pasivos de control para pruebas de integridad academica en el laboratorio educativo. Excluido de la puntuacion del CTF.",
+  "scoring_eligible": false,
+  "canaries": [
+    {
+      "id": "CANARY-01",
+      "vector": "Vector 1 (HTML)",
+      "flag": "DUOC{canary_verificacion_contexto_html_71948}",
+      "file_path": "templates/canary_samples/vector_1_html.html",
+      "description": "Comentario HTML estatico con nota de control de verificacion de contexto",
+      "passive_only": true
+    },
+    {
+      "id": "CANARY-02",
+      "vector": "Vector 2 (Metadatos)",
+      "flag": "DUOC{canary_registro_fuente_meta_53826}",
+      "file_path": "templates/canary_samples/vector_2_metadata.json",
+      "description": "Campo de metadatos benigno (_academic_integrity_note) con aviso de verificacion de fuente",
+      "passive_only": true
+    },
+    {
+      "id": "CANARY-03",
+      "vector": "Vector 3 (Markdown)",
+      "flag": "DUOC{canary_control_documental_md_84273}",
+      "file_path": "templates/canary_samples/vector_3_markdown.md",
+      "description": "Nota tecnica en archivo Markdown de ejemplo para control de contexto documental",
+      "passive_only": true
+    }
+  ]
+}

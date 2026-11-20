@@ -1,0 +1,12 @@
+version: 'beta1'
+name: 'plantilla-osint-investigativo'
+author: 'Equipo Docente Ciberseguridad DUOC'
+flag: 'DUOC{operacion_faro_austral_84920}'
+description: |
+  [PLANTILLA OSINT INVESTIGATIVO] Correlación de información pública, cronologías, fuentes abiertas y pistas cruzadas.
+value: 1000
+tags:
+  - 'OSINT'
+  - 'Investigacion'
+notes: |
+  Plantilla educativa reutilizable para creación de nuevos retos de OSINT Investigativo.

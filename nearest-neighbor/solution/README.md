@@ -1,12 +1,12 @@
-# `nearest-neighbor` -- hiding data such that nearest-neighbor rescaling will reveal it
+# `nearest-neighbor` -- ocultación de datos revelable mediante reescalado por vecino más cercano
 
-Players are expected to either notice the name of the challenge is a hint that neirest-neighbor rescaling is needed, or to example the image and spot the grid of darker pixels:
+Se espera que los participantes noten que el nombre del desafío es una pista sobre la interpolación por vecino más cercano (*nearest-neighbor*), o bien que inspeccionen la imagen haciendo zoom y detecten la cuadrícula regular de píxeles más oscuros:
 
 ![grid zoom](grid_zoom.webp)
 
-The spacing of the dark pixels is 16 apart in x and y so a nearest-neighbor downscaling by a factor of 16 should select these pixels. The original flag size is 4096x3072 which when shrank by 16 is 256x192.
+El espaciado entre esos píxeles es de 16 píxeles tanto en $x$ como en $y$, por lo que una reducción de escala con interpolación por vecino más cercano por un factor de 16 selecciona exactamente dichos píxeles. El tamaño original de la imagen es `4096x3072`, que al dividirse por 16 resulta en `256x192`.
 
-The rescaling with nearest-neighbor "interpolation" can be done like so:
+El reescalado con interpolación por vecino más cercano se realiza con el siguiente comando (la flag oficial estandarizada del reto es `DUOC{interpolacion_submuestreo_28594}`):
 
 `$ magick flag.webp -interpolate nearest-neighbor -interpolative-resize 256x192 flag_visible.png`
 

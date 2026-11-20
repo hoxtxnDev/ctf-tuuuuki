@@ -375,7 +375,7 @@ def progress_response(msg, wordDB, user):
     return resp
     
 def win_response(msg, cookie_string, user):
-    flag = "CTF{h4ngmanr0ulett3w1n}"
+    flag = "DUOC{persistencia_cookie_estado_58271}"
     word, cookie_string = reset_game(user, cookie_string)
     letters = [""] * len(word)
     stageImg = "hangman-" + str(user.life_lost) + ".png"

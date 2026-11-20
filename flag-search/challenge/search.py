@@ -10,7 +10,7 @@ key = int('{:0128b}'.format(bekey)[::-1], 2)
 
 print(f"key in hex: {key :x}")
 #              0123456789abcdef
-flag_bytes = b'CTF{bctrckngftw}'
+flag_bytes = b'DUOC{poda_backtracking_bits_49182}'
 
 checks = {}
 

@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'hoard'
 author: 'ron'
-flag: 'CTF{a-dragons-hoard-is-all-he-has-dont-take-it-away}'
+flag: 'DUOC{escape_comillas_parametro_69145}'
 description: |
   Can you raid the dragon's hoard??
 value: 1000 # Leave this as 1000 unless you have a reason to change it

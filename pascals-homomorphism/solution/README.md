@@ -46,9 +46,9 @@ Flag 1:
     paillier> getflag
     Encrypted flag 1 (weak): 14037216798694959574384150946319159850382277843414803362297145132835955127769909416465103449863997744601756017017706
 
-This can be attacked directly by factoring N.
+Este módulo puede atacarse directamente factorizando $N$.
 
-Using GP/PARI:
+Usando GP/PARI:
 
     $ gp -q
     
@@ -98,14 +98,14 @@ Using GP/PARI:
     %11 = 22910939700329790443863095484608789183754
     
     GP/PARI> strchr(digits(m, 256))
-    %12 = "CTF{wut_not_rsa}\n"
+    %12 = "DUOC{factorizacion_modulo_debil_35792}\n"
 
 
-Breaking the second flag relies on ciphertext malliability (the Paillier system homomorphism) and the decryption oracle. Briefly, in Paillier, enc(m1) = c1 and enc(m2) = c1 but also enc(m1 + m2) = c1 * c2.
+La obtención de la segunda flag (`pascals-homomorphism-2`) se basa en la maleabilidad del texto cifrado (la propiedad homomórfica aditiva del criptosistema de Paillier) y el oráculo de descifrado. En Paillier, si $\text{enc}(m_1) = c_1$ y $\text{enc}(m_2) = c_2$, entonces $\text{enc}(m_1 + m_2) = c_1 \cdot c_2 \bmod n^2$.
 
-So the idea is this: get the encrypted flag, partially factor the ciphertext. The decrypt each factor to find the corresponding plaintext for each factor. Once all the factors are decrypted, the true message is the sum of all of the factor messeges mod n.
+Por lo tanto, el procedimiento consiste en obtener la flag cifrada y factorizar parcialmente el texto cifrado $c$. Luego se solicita al oráculo el descifrado de cada factor para hallar su texto plano correspondiente. Una vez descifrados todos los factores, el mensaje original es la suma de todos los textos planos parciales módulo $n$.
 
-The decryption oracle provided is capped at 2000 bits but factoring the ~2048 encrypted flag should find enough small factors to drop the largest factor below 2000. If it doesn't just fetch the encrypted flag until it does.
+El oráculo de descifrado está limitado a entradas de hasta 2000 bits, pero al factorizar la flag cifrada (~2048 bits) se suelen encontrar suficientes factores pequeños para reducir el factor mayor por debajo de 2000 bits. Si en un intento no ocurre, basta con solicitar nuevamente la flag cifrada (ya que Paillier usa aleatoriedad por cifrado).
 
     paillier> genkey strong
     New strong key generated (1024 bits)
@@ -138,7 +138,7 @@ The decryption oracle provided is capped at 2000 bits but factoring the ~2048 en
     Number, c, to decrypt? 116132024323457094571330543406887656689880605607462973436783570657002627064631182020404516922341378754371202964765730569277877702515441914257099488804125212478352026987440543274836064475069960415663342761118462237682276189879849485135057256312407117279079732356350348785317356278706933730959386546070352345637198092078821082037381284008796112911278718341073849929539800177985285587503526829635367828032687298811081847884333550318822462302934313436396316116775238819665006944733915611260769795934959968371085560475215856122848967100467756196645826273257812261428998202641931228323933594405182808098079
     Plaintext for c: 98071050004829417147178139318350985823771395925076367950924688772571412781658916003818420257630105841890625875295454236327596003183490844605269137737651747256032367444999345977515143368617519163190793395549844634585199719017634210382948030817115379958263506346295387265012883968136666827481798662789564334482
 
-In this case, the first getflag returned a number that couldn't easily be factored into chunks smaller than 2000 bits so a second getflag was done.
+En este ejemplo, la primera llamada a `getflag` devolvió un número que no tenía suficientes factores pequeños para quedar por debajo de 2000 bits, por lo que se realizó una segunda llamada a `getflag`.
 
     $ gp -q
     
@@ -200,5 +200,5 @@ In this case, the first getflag returned a number that couldn't easily be factor
     118960400225922908767092208475413882656989809230909919847227803807091948810
     
     GP/PARI> strchr(digits(m, 256))
-    "CTF{homomorphisms_for_the_win}\n"
+    "DUOC{maleabilidad_aditiva_oraculo_89417}\n"
 

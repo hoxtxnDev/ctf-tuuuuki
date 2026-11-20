@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'digital-citizen-2'
 author: 'symmetric'
-flag: 'CTF{for_bits_location_is_everything}'
+flag: 'DUOC{raices_pequenas_coppersmith_92647}'
 description: |
   Citizen: You must register your key in our new secure database! (This uses the same service as digital-citizen-1)
 value: 1000 # Leave this as 1000 unless you have a reason to change it

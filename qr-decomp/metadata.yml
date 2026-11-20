@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'qr-decomp'
 author: 'symmetric'
-flag: 'CTF{punny_codes}'
+flag: 'DUOC{producto_matricial_ortogonal_64928}'
 description: |
   We've split a secret flag into 5 parts and scattered them accross the venue. Can you find them and assemble the flag?
 value: 100

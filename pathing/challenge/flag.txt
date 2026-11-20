@@ -1,1 +1,1 @@
-CTF{dotslashdotdotslashdotslashes}
+DUOC{navegacion_relativa_raiz_52683}

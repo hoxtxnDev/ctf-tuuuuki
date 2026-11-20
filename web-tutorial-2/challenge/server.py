@@ -42,7 +42,7 @@ def xssTwoResult():
 @app.route('/xss-two-flag', methods=['GET'])
 def xssTwoFlag():
     if 'admin' in request.cookies and request.cookies.get("admin") == u"ce0443ba6c37f27b65d68287be4cb3f69112d3afb68cff09b144f0048eab253bd9b000f50f8096":
-        return "CTF{Cl0udyFunct10n5F0rA11}"
+        return "DUOC{dominio_autorizado_politica_85329}"
     else:
         return "Sorry, admins only!"
 

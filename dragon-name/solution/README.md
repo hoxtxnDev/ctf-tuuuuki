@@ -1,4 +1,4 @@
-The app generates the flag in the createFlag() function which does the following, 
+La aplicación Android genera la flag dentro de la función `createFlag()`, la cual realiza lo siguiente:
 ```
  fun createFlag(): String {
         val part1 = rot13("PGS")
@@ -15,45 +15,41 @@ The app generates the flag in the createFlag() function which does the following
   
  ```
 
-Here is what the function step-by-step:
-## Part 1
-"PGS" is ROT13 encoded.
+A continuación se detalla lo que hace la función paso a paso:
+## Parte 1
+"PGS" está codificado con ROT13.
 'P' + 13 = 'C'
 'G' + 13 = 'T'
 'S' + 13 = 'F'
-Therefore, part1 ("PGS" after rot13) is "CTF".
+Por lo tanto, `part1` ("PGS" tras aplicar ROT13) es "CTF".
 
-## Part 2
-The Base64 string "dzNhaw==" is decoded.
-"dzNhaw==" decodes to "w3ak".
-Therefore, part2 is "w3ak".
+## Parte 2
+La cadena Base64 "dzNhaw==" se decodifica a "w3ak".
+Por lo tanto, `part2` es "w3ak".
 
 
-## Part 3
-The code creates the string "T0".
-Therefore, part3 is "T0".
+## Parte 3
+El código construye la cadena "T0" (`10 % 2 == 0`).
+Por lo tanto, `part3` es "T0".
 
-## Part 4
+## Parte 4
 `getResources().getString(R.string.part4):`
-This retrieves the string resource with the ID R.string.part4.
-Which is "Fa1ry"
-Therefore, part4 is "Fa1ry"
+Recupera el recurso de cadena con identificador `R.string.part4`, cuyo valor es "Fa1ry".
+Por lo tanto, `part4` es "Fa1ry".
 
-## Part 5
+## Parte 5
 "Typ" + 3:
-The code creates the string "Typ3".
-Therefore, part5 is "Typ3".
+El código construye la cadena "Typ3".
+Por lo tanto, `part5` es "Typ3".
 
 ## Flag 
 
-The code concatenates all the parts:
-"CTF" + "{" + $part1 + $part2 + $part3 + $part4 + $part5 + "}"
-Therefore, the flag is: "CTF{w3akT0Fa1ryTyp3}".
+El código concatena todas las partes para formar la flag (cuyo valor oficial estandarizado en este repositorio es `"DUOC{debilidad_elemental_hada_45928}"`).
 
-## How to reverse the app
-### Apk tool 
-* Use apktool to unpack the apk `java -jar apktool_2.11.0.jar d dragon-names.apk`
-* The relevant Smali code is in `smali_classes4\com\example\dragonnames\MainActivity`
+## Cómo realizar ingeniería inversa sobre la aplicación
+### Apktool 
+* Utiliza apktool para desempaquetar el archivo APK (`dragon-name.apk` en `distfiles/`): `java -jar apktool_2.11.0.jar d dragon-names.apk`
+* El código Smali relevante se encuentra en `smali_classes4\com\example\dragonnames\MainActivity`
 ```
 .method public final createFlag()Ljava/lang/String;
     .locals 10
@@ -208,13 +204,13 @@ Therefore, the flag is: "CTF{w3akT0Fa1ryTyp3}".
     return-object v8
 .end method
 ```
-* The part4 string is in `res/values/strings.xml`
+* La cadena `part4` se encuentra definida en `res/values/strings.xml`
 ```
 <string name="part4">Fa1ry</string>
 ```
 
 ### Android Studio 
-* From `File` choose `Profile or Debug APK`
-* Relevant code will be in `java > com.example > dragonnames > MainActivity` (Should be same/similar to smali from Apktool)
-* Select `resources.arsc`, in `Resource types` choose `string`, scroll to part4 
+* Desde el menú `File`, selecciona `Profile or Debug APK`
+* El código descompilado relevante estará en `java > com.example > dragonnames > MainActivity`
+* Selecciona `resources.arsc`, en `Resource types` elige `string` y desplázate hasta `part4`
 ![alt text](Studio.PNG "Missing Image")

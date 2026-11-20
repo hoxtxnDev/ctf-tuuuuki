@@ -1,1 +1,1 @@
-CTF{told-you-its-not-timing}
+DUOC{oraculo_codigo_retorno_83715}

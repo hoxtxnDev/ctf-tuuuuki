@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'pascals-homomorphism-2'
 author: 'symmetric'
-flag: 'CTF{homomorphisms_for_the_win}'
+flag: 'DUOC{maleabilidad_aditiva_oraculo_89417}'
 description: |
   Okay now you *really* have to break it. (Uses same service as part 1)
 value: 1000 # Leave this as 1000 unless you have a reason to change it

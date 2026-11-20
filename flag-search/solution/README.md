@@ -1,4 +1,4 @@
-The flag-search program runs the input key through a series of checks. The checks apply to increasingly long portions of the key which is designed to make backtracking search a natural approach.
+El programa `flag-search` somete la clave de entrada de 128 bits a una serie de verificaciones aritméticas y de conteo de bits que se aplican sobre prefijos cada vez más largos de la clave, lo que hace que una búsqueda con retroceso (*backtracking*) sea el enfoque natural para podar el espacio de búsqueda.
 
     $ python3 search.py
     Found key [1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1] feca3c730601be7fd57f1f0b668b4637
@@ -53,5 +53,5 @@ The flag-search program runs the input key through a series of checks. The check
     Enter 128-bit key:
     Checking key feca3c730601be7fd57f1f0b668b4637
     
-    Decrypted flag: CTF{bctrckngftw}
+    Decrypted flag: DUOC{poda_backtracking_bits_49182}
 

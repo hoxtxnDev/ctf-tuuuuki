@@ -1,0 +1,12 @@
+version: 'beta1'
+name: 'plantilla-osint-digital'
+author: 'Equipo Docente Ciberseguridad DUOC'
+flag: 'DUOC{nodo_respaldo_andino_64512}'
+description: |
+  [PLANTILLA OSINT DIGITAL] Investigación de dominios ficticios, infraestructura pública, registros DNS y relaciones entre activos digitales.
+value: 1000
+tags:
+  - 'OSINT'
+  - 'DNS'
+notes: |
+  Plantilla educativa reutilizable para creación de nuevos retos de OSINT Digital.

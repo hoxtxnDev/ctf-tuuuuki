@@ -1,0 +1,13 @@
+=== CONSULTA RDAP / WHOIS DE BLOQUES IP (RFC 5737 TEST-NET) ===
+
+Bloque 1: 198.51.100.0/24
+  Organización: Andina Cloud Lab - Red Primaria
+  ASN: AS64501
+  Estado: ACTIVO
+
+Bloque 2: 203.0.113.0/24
+  Host registrado: 203.0.113.88 (nodo-respaldo-andino.infra-sur.internal.edu)
+  Organización: Red Académica de Contingencia Austral
+  ASN: AS64512
+  Contacto Técnico: noc-contingencia@infra-sur.internal.edu
+  Nota operativa: Nodo activo de replicación fuera de banda.

@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS dragons (
 );
 
 INSERT INTO dragons (name, color, size, habitat, is_classified) VALUES
-  ('Dragon-000', 'Flaggy flag', 'Large', 'CTF{those-are-the-types-of-dragons}', 1),
+  ('Dragon-000', 'Flaggy flag', 'Large', 'DUOC{evasion_filtro_clasificado_24861}', 1),
   ('Dragon-001', 'Timeworn Patina', 'Large', 'Dark Matter Forests', 0),
   ('Dragon-002', 'Blackhole Iris', 'Large', 'Gravity Well Oases', 0),
   ('Dragon-003', 'Psychedelic Obsidian', 'Medium', 'Dark Matter Forests', 0),

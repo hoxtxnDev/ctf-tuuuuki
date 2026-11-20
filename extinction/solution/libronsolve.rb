@@ -73,7 +73,7 @@ def check_flag(flag, terminate: true, partial: false)
   flag = flag.chomp
 
   if partial
-    unless flag =~ /(CTF{[^}]*})/
+    unless flag =~ /(DUOC{[^}]*})/
       raise "Nothing in the data looks like a/the flag: #{ flag } (\"#{ flag.unpack('H*').pop }\")"
     end
 

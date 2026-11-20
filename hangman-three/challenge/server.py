@@ -384,7 +384,7 @@ def progress_response(msg, wordDB, user, form):
     return response
     
 def win_response(msg, user, form):
-    flag = "CTF{hangm4nW1thW3akJWTK3y}"
+    flag = "DUOC{secreto_jwt_diccionario_91463}"
     word, new_access_token = reset_game(user)
     letters = [""] * len(word)
     stageImg = "hangman-" + str(user.life_lost) + ".png"

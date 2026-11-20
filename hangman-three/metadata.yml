@@ -10,7 +10,7 @@
 version: "beta1"
 name: "hangman-three"
 author: "itsc0rg1"
-flag: "CTF{hangm4nW1thW3akJWTK3y}"
+flag: "DUOC{secreto_jwt_diccionario_91463}"
 description: |
   Play hangman and guess the flag
 value: 1000 # Leave this as 1000 unless you have a reason to change it

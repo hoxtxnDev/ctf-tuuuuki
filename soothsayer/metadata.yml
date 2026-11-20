@@ -10,7 +10,7 @@
 version: beta1
 name: soothsayer
 author: itsc0rg1
-flag: "CTF{S33dth3tw1st3r}"
+flag: "DUOC{prediccion_semilla_aleatoria_39846}"
 description: "Which came first the dragon or the egg? Guess correctly 30 times in a row."
 value: 1000
 tags:

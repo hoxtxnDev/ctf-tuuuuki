@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'bug-me'
 author: 'ron'
-flag: 'CTF{hope-you-enjoyed-this-one}'
+flag: 'DUOC{residuos_teorema_chino_62841}'
 description: |
   A dragon has hidden his treasure and won't tell us where until we solve his puzzle! Can you untangle this binary and get the flag?
 

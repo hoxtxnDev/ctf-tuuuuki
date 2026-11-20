@@ -2,7 +2,7 @@
 
 require 'tempfile'
 
-FLAG = 'CTF{hope-you-enjoyed-this-one}'
+FLAG = 'DUOC{residuos_teorema_chino_62841}'
 
 # Set this pointer to the end of the file, because we need to know where the
 # code is

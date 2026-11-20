@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'taxonomy'
 author: 'ron'
-flag: 'CTF{those-are-the-types-of-dragons}'
+flag: 'DUOC{evasion_filtro_clasificado_24861}'
 description: |
   Search the different dragon types! Can you find the secret ones?
 value: 1000 # Leave this as 1000 unless you have a reason to change it

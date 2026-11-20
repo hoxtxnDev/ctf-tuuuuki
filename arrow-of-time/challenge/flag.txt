@@ -1,1 +1,1 @@
-CTF{reverse_time_polarity}
+DUOC{ciclo_colision_brent_59184}

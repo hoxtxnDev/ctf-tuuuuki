@@ -17,7 +17,7 @@ my $IMG_H = 8 * $DOT_L + $PAD_L * 2;
 my $char = ord('z');
 
 my $ALL_LET = 'abCdeFghijklmnopqrsTuvwxyz{}f';
-my $FLAG = 'CTF{plsverifynow}';
+my $FLAG = 'DUOC{matriz_puntos_amarillos_95173}';
 
 my $c = 1;
 foreach my $l (split(//, $ALL_LET)) {

@@ -1,1 +1,1 @@
-CTF{for_bits_location_is_everything}
+DUOC{raices_pequenas_coppersmith_92647}

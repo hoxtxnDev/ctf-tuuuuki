@@ -1,0 +1,7 @@
+{
+  "artifact_type": "osint_metadata_sample",
+  "station_code": "EST-LAB-02",
+  "timestamp_utc": "2026-11-20T12:00:00Z",
+  "_academic_integrity_note": "Aviso de verificacion de fuente (CANARY-02): Marcador de trazabilidad documental DUOC{canary_registro_fuente_meta_53826}. Elemento pasivo de control academico excluido de las flags legitimas del reto.",
+  "telemetry_status": "nominal"
+}

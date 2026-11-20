@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'dragon-name'
 author: 'itsc0rg1'
-flag: 'CTF{w3akT0Fa1ryTyp3}'
+flag: 'DUOC{debilidad_elemental_hada_45928}'
 description: |
   Can you find the flag on the app? 
 value: 1000 # Leave this as 1000 unless you have a reason to change it

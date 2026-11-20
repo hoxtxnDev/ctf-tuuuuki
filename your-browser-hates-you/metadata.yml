@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'your-browser-hates-you'
 author: 'ron'
-flag: 'CTF{shh-its-a-secret}'
+flag: 'DUOC{omision_certificado_autofirmado_37614}'
 description: |
   We're pretty sure there's a flag on this page, but something is wrong with SSL and we can't get our browser to render it! Can you help?
 

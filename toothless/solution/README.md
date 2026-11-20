@@ -1,10 +1,7 @@
 # Toothless
 
-The idea behind the challenge is to appear daunting at first but be rather
-trivial to solve.
+La idea detrás del desafío es parecer intimidante a primera vista pero resultar directo al inspeccionar las anomalías del tráfico.
 
-When you explore the PCAP file, you'll notice a lot of repeated ICMP requests
-and responses between the same IP addresses. 
-However, only one ICMP request is missing a response. This packet contains a
-base64 string in its data.
-If you decode the base64 string, you'll have the flag. 
+Al explorar el archivo PCAP (`toothless.pcap`), observarás una gran cantidad de solicitudes y respuestas ICMP Echo repetidas entre las mismas direcciones IP.
+Sin embargo, existe exactamente una solicitud ICMP Echo Request que no tiene respuesta. Ese paquete contiene una cadena codificada en Base64 dentro de su carga útil de datos.
+Al decodificar la cadena Base64 se obtiene la flag (`DUOC{carga_icmp_huerfana_68352}`).

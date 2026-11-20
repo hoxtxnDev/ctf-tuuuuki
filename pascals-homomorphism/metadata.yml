@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'pascals-homomorphism-1'
 author: 'symmetric'
-flag: 'CTF{wut_not_rsa}'
+flag: 'DUOC{factorizacion_modulo_debil_35792}'
 description: |
   We've implemented the Paillier cryptosystem for your hacking pleasure. Can you break it?
 value: 1000 # Leave this as 1000 unless you have a reason to change it

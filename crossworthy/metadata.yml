@@ -1,7 +1,7 @@
 version: 'beta1'
 name: 'crossworthy'
 author: 'ron'
-flag: 'CTF{bugbounty}'
+flag: 'DUOC{recompensa_vulnerabilidad_53918}'
 description: |
   Solve the crossword in the program (or attached as PDF/HTML files)! The flag is 66 across (surrounded by `CTF{...}`)
 value: 1000

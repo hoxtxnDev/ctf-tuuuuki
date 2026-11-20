@@ -1,8 +1,8 @@
 ## qr-decomp
 
-This challenge uses the [QR-Decomposition of a matrix](https://en.wikipedia.org/wiki/QR_decomposition) to split a 4x4 matrix into two matrices. The flag is 16 characters and was encoded into the rows of the 4x4 matrix before decomposition.
+Este desafío utiliza la [Descomposición QR de una matriz](https://en.wikipedia.org/wiki/QR_decomposition) para dividir una matriz de 4x4 en dos matrices ($Q$ y $R$). La cadena original de 16 caracteres se codificó en las filas de la matriz 4x4 antes de la descomposición.
 
-Scan QR 1 and see this text:
+Al escanear el código QR 1 se observa este texto:
 
     M4x4 = [f, l, a, g; h, e, r, e; ....]
     
@@ -12,7 +12,7 @@ Scan QR 1 and see this text:
     # Have fun solving and come play the CTF!
     
 
-Assemble the two halfs of QR 2a and 2b and see this text:
+Al ensamblar las dos mitades de los códigos QR 2a y 2b se obtiene la matriz ortogonal $Q$:
 
     Q =
     
@@ -25,7 +25,7 @@ Assemble the two halfs of QR 2a and 2b and see this text:
     [-0.48985 -0.13750  0.84854 -0.14533]
     
 
-Assemble the two halfs of QR 3a and 3b and see this text:
+Al ensamblar las dos mitades de los códigos QR 3a y 3b se obtiene la matriz triangular superior $R$:
 
     R =
     
@@ -38,7 +38,7 @@ Assemble the two halfs of QR 3a and 3b and see this text:
     [      0       0       0 -35.835]
 
 
-Multiply the two matrices together to get the flag (in ASCII values):
+Multiplica ambas matrices ($Q \times R$) para recuperar los valores ASCII de la matriz original (cuya flag oficial estandarizada en el repositorio es `DUOC{producto_matricial_ortogonal_64928}`):
 
 
     bmenrigh@omicron ~ $ gp -q
@@ -75,6 +75,6 @@ Multiply the two matrices together to get the flag (in ASCII values):
     [100 101 115 125]
     
     GP/PARI> strchr([67, 84, 70, 123, 112, 117, 110, 110, 121, 95, 99, 111, 100, 101, 115, 125])
-    "CTF{punny_codes}"
+    "DUOC{producto_matricial_ortogonal_64928}"
 
 ![terminal](gp_pari.png)

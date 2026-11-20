@@ -1,9 +1,9 @@
-This challenge exploits the fact that a 64-bit hash has cycles of length O(2^32). You can't brute-force the pre-image of each MD5 for several reasons:
+Este desafío aprovecha el hecho de que un hash truncado a 64 bits presenta ciclos de longitud $O(2^{32})$. No es viable obtener por fuerza bruta la preimagen de cada MD5 por varias razones:
 
-* Doing so is O(2^64) work and there are simply too many to do
-* There are collisions so you don't know which backwards branch to take
+* Hacerlo requiere un trabajo de orden $O(2^{64})$ y hay demasiadas iteraciones que calcular.
+* Existen colisiones, por lo que no se sabe qué rama hacia atrás tomar.
 
-Instead you find the iterated cycle length for one of the hashes in the video and then use the timestamp of that hash to work 'backwards' by going forwards. See md5_brent.c for finding cycles and also the solution function:
+En su lugar, se calcula la longitud del ciclo iterado para uno de los hashes mostrados en el video y luego se utiliza la marca de tiempo de ese hash para retroceder en el tiempo avanzando hacia adelante en el ciclo. Consulta `md5_brent.c` para la detección de ciclos mediante el algoritmo de Brent y la función de solución:
 
 
     void solve() {
@@ -48,7 +48,7 @@ Instead you find the iterated cycle length for one of the hashes in the video an
     }
 
 
-Since this will take a few min to excecute, have it find a recent time and then simply fast-forward from that time:
+Dado que esto tardará algunos minutos en ejecutarse, conviene calcular un estado correspondiente a un instante reciente y luego avanzar rápidamente desde ese instante:
 
     #!/usr/bin/env python
     
@@ -86,7 +86,7 @@ Then solving:
 
     State = ? 983630b0180d8cc4
     983630b0180d8cc4
-    CTF{reverse_time_polarity}
+    DUOC{ciclo_colision_brent_59184}
 
 
-Note: an assumption must be made when using exploiting the cycle which is that the clock is currently in the main cycle loop and not one of the branches leading into the loop. This would be much easier to justify if the lead-in to the cycle were short so the clock had definitely been running long enough to have entered the cycle. Of course the challenge has been constructed such that the clock is in the cycle or else the challenge wouldn't be solvable. No hint or justification of this has been provided to players as I felt doing so would give away the key solution idea. I considered many different options for avoiding this "issue" including shrinking the hash to 48 bits, or making the clock updated after 10ths or 100ths of a second, or stating that it had been running continuously since 1995 (about 1B seconds), etc. All of these came with flaws that I felt imbalanced the challenge in some way or another.
+Nota técnica: al aprovechar el ciclo se asume que el reloj se encuentra actualmente dentro del bucle principal del ciclo y no en una de las ramas previas que desembocan en él. El desafío fue construido específicamente de modo que el estado del reloj ya se encuentre dentro del ciclo para garantizar que sea resoluble.

@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'magic'
 author: 'anshc'
-flag: 'CTF{g0t_th3_p0w3r_u_n33d}'
+flag: 'DUOC{reparacion_firma_cabecera_76392}'
 description: |
   I think there's something wrong with this file, can you work some magic? 
 value: 1000 # Leave this as 1000 unless you have a reason to change it

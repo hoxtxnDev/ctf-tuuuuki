@@ -44,7 +44,7 @@ def xssOneResult():
 def xssOneFlag():
     if 'admin' in request.cookies and request.cookies.get("admin") == u"582c2fa2ae965a46923057b52b4e2a88eea1e1a52885bd84862122c9f580104dc20e1660b":
         print(f'Admin is here')
-        return "CTF{X55-1s-back-aga1n}"
+        return "DUOC{exfiltracion_script_inline_41975}"
     else:
         return "Sorry, admins only!"
 

@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'extra-effed-system'
 author: 'symmetric'
-flag: 'CTF{ticktock_upwarp}'
+flag: 'DUOC{reconstruccion_extents_xfs_63819}'
 description: |
   My hard drive got fried by the airport X-Ray scanner! Now I'll never see my glorious flag image again :-(
 value: 1000 # Leave this as 1000 unless you have a reason to change it

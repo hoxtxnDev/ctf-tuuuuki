@@ -1,1 +1,1 @@
-CTF{helping-dragons-find-love-since-2025}
+DUOC{deserializacion_xmldecoder_86429}

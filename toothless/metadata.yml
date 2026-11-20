@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'toothless'
 author: 'anshc'
-flag: 'CTF{y0u_us3l3ss_r3pt1l3}'
+flag: 'DUOC{carga_icmp_huerfana_68352}'
 description: |
   This packet capture seems convoluted. Is it? 
 value: 1000 # Leave this as 1000 unless you have a reason to change it

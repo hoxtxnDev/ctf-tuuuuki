@@ -10,7 +10,7 @@
 version: beta1
 name: meow
 author: Daniel Pendolino
-flag: 'CTF{DontBeACheatAh}'
+flag: 'DUOC{lectura_consola_remota_39174}'
 description: Terminal Challenges Welcome
 value: 1000
 tags:

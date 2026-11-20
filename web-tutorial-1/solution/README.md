@@ -1,6 +1,6 @@
-Standard XSS challenge, CSP will allow inline scripts. 
+Desafío introductorio de Cross-Site Scripting (XSS) donde la política de seguridad de contenido (CSP) permite scripts en línea (`unsafe-inline`).
 
-Something like the following payload would work, 
+Una carga útil como la siguiente permite que el navegador del administrador consulte `/xss-one-flag` y exfiltre la flag (`DUOC{exfiltracion_script_inline_41975}`):
 
 ```
 <script>
@@ -15,5 +15,5 @@ Something like the following payload would work,
  </script>
 ```
 
-If you want to test the challenge, run the following command - 
+Para probar el desafío de forma automatizada, ejecuta el siguiente comando:
 `python solution.py <challenge-url>`

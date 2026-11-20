@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'oh-say-can-you-see'
 author: 'symmetric'
-flag: 'CTF{draigon}'
+flag: 'DUOC{inversion_gradiente_red_43681}'
 description: |
   We've trained this flag classifier on a bunch of flags to help you spot them
 value: 1000 # Leave this as 1000 unless you have a reason to change it

@@ -1,0 +1,12 @@
+; === VOLCADO DE DNS PASIVO (DOMINIO FICTICIO AUTORIZADO: andinacloud-lab.internal.edu) ===
+; Exportado para laboratorio educativo OSINT Digital
+
+andinacloud-lab.internal.edu.        3600 IN SOA   ns1.andinacloud-lab.internal.edu. hostmaster.andinacloud-lab.internal.edu. 2026111501 7200 3600 1209600 3600
+andinacloud-lab.internal.edu.        3600 IN A     198.51.100.14
+andinacloud-lab.internal.edu.        3600 IN TXT   "v=spf1 ip4:198.51.100.0/24 ip4:203.0.113.88/32 -all"
+portal.andinacloud-lab.internal.edu. 3600 IN A     198.51.100.14
+api.andinacloud-lab.internal.edu.    3600 IN CNAME portal.andinacloud-lab.internal.edu.
+_dmarc.andinacloud-lab.internal.edu. 3600 IN TXT   "v=DMARC1; p=reject; rua=mailto:secops@andinacloud-lab.internal.edu"
+; Registro histórico detectado en resolución pasiva:
+dr-sync.andinacloud-lab.internal.edu. 900 IN CNAME nodo-respaldo-andino.infra-sur.internal.edu.
+nodo-respaldo-andino.infra-sur.internal.edu. 900 IN A 203.0.113.88

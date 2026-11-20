@@ -12,7 +12,7 @@ const RESTRICTED_MESSAGES = [
 
 let recorded_keystrokes = ``;
 
-const MOA_AUTHENTICATION_SECRET_FLAG = `CTF{TRUST_BUT_VER1FY}`;
+const MOA_AUTHENTICATION_SECRET_FLAG = `DUOC{eventos_teclado_extension_61839}`;
 localStorage.setItem('secret', MOA_AUTHENTICATION_SECRET_FLAG);
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {

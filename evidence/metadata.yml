@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'evidence'
 author: 'ron'
-flag: 'CTF{aha-found-em}'
+flag: 'DUOC{entidad_externa_xml_29483}'
 description: |
   Do you know anything about dragons? Upload your evidence (but be careful with XML entities!)
 value: 1000 # Leave this as 1000 unless you have a reason to change it

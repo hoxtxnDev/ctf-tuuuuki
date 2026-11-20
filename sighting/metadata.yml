@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'sighting'
 author: 'ron'
-flag: 'CTF{dotdotslashdotdot}'
+flag: 'DUOC{inclusion_archivo_local_46197}'
 description: |
   Seen a dragon? Tell us! Just don't go looking where you're not supposed to...
 

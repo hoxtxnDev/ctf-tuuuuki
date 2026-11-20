@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'hidden-reports'
 author: 'ron'
-flag: 'CTF{select-or-one-equals-one}'
+flag: 'DUOC{tautologia_booleana_sql_47289}'
 description: |
   Can you access the secret dossier?
 value: 1000 # Leave this as 1000 unless you have a reason to change it

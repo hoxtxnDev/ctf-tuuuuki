@@ -36,4 +36,4 @@ Scales of emerald,
 wings of night,
 Answer the call,
 with all your might.
-CTF{Viridian}
+DUOC{sustitucion_runas_esmeralda_81354}

@@ -1,8 +1,8 @@
-This challenge is based on Google's [Zen and the Art of Microcode Hacking](https://bughunters.google.com/blog/5424842357473280/zen-and-the-art-of-microcode-hacking) post.
+Este desafío está basado en la publicación de Google [Zen and the Art of Microcode Hacking](https://bughunters.google.com/blog/5424842357473280/zen-and-the-art-of-microcode-hacking).
 
-The vulnerability is the same CMAC-of-RSA-key is not secure.
+La vulnerabilidad radica en que utilizar AES-CMAC sobre una clave pública RSA no es criptográficamente seguro frente a ataques de preimagen cuando la clave CMAC es conocida.
 
-You can use aes_cmac.py to find a pre-image fo AES-CMAC with:
+Puedes utilizar `aes_cmac.py` para encontrar una preimagen de AES-CMAC con:
 
     def break_aes_cmac(message, K, H):
     
@@ -27,9 +27,9 @@ You can use aes_cmac.py to find a pre-image fo AES-CMAC with:
         return message[:len(message) - 32] + MP + message[-16:]
 
 
-There is also code in there to check if the resulting number is the product of two primes. Using a modulus found with that tool build_forged_blob.py do the "firmware" code signing.
+También incluye código para comprobar si el número resultante es el producto de dos números primos. Utilizando un módulo encontrado con esa herramienta, `build_forged_blob.py` realiza la firma del código de "firmware".
 
-The shellcode in print_flag.asm can be assembled (`nasm -o print_flag.bin print_flag.asm`) and fed to the blob creation for a full working solution.
+El código ensamblador en `print_flag.asm` se puede ensamblar (`nasm -o print_flag.bin print_flag.asm`) y pasarse al generador del blob para obtener la solución completa:
 
 
     $ python3 ./build_forged_blob.py print_flag.bin | netcat 127.0.0.1 8664
@@ -99,5 +99,5 @@ The shellcode in print_flag.asm can be assembled (`nasm -o print_flag.bin print_
     INFO: Changing memory protection to executable.
     INFO: Starting hardware watchdog with 5 second timeout.
     INFO: Calling newly loaded machinecode function.
-    CTF{zen_and_the_art_of_bad_crypto}
+    DUOC{preimagen_cmac_microcodigo_73920}
 

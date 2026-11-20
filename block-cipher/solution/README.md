@@ -1,56 +1,56 @@
-## `block-cipher` is a text-to-image encoding scheme.
+## `block-cipher` es un esquema de codificación de texto a imagen.
 
-Users input a "key" and some words separated by spaces. Words are encoded 3 letters at a time into large blocks. The large blocks are divided into three sub-blocks, one a 1x2 rectangle and two 1x1 squares. The keys takes the numbers 1 - 4 and depending on the value, swaps around sub-blocks within a large block. The effect of the key is rather minor and the key can be pretty easily read from the image directly.
+Los usuarios ingresan una "clave" y algunas palabras separadas por espacios. Las palabras se codifican de 3 letras a la vez en bloques grandes. Los bloques grandes se dividen en tres sub-bloques: un rectángulo de 1x2 y dos cuadrados de 1x1. La clave acepta los números del 1 al 4 y, según el valor, intercambia la posición de los sub-bloques dentro de un bloque grande. El efecto de la clave es menor y puede leerse directamente desde la imagen.
 
-Players are meant to start small, trying short messages like "a", then "b", "c", and so on. A pattern of changes in the sub-blocks should become apparent. Using a key of "1" the top-left square sub-block will change in this repeating sequence:
+La idea es comenzar probando mensajes cortos como "a", luego "b", "c", y así sucesivamente. Debería hacerse evidente un patrón de cambios en los sub-bloques. Usando una clave de "1", el sub-bloque cuadrado superior izquierdo cambiará en esta secuencia repetitiva:
 
 ![a0](imgs/a_0.png) ![a1](imgs/a_1.png) ![a2](imgs/a_2.png) ![a3](imgs/a_3.png) ![a4](imgs/a_4.png)
 
-When this block roles over the next square sub-block changes. It follows this sequence:
+Cuando este bloque completa su ciclo, cambia el siguiente sub-bloque cuadrado siguiendo esta secuencia:
 
 ![b0](imgs/b_0.png) ![b1](imgs/b_1.png) ![b2](imgs/b_2.png) ![b3](imgs/b_3.png) ![b4](imgs/b_4.png)
 
-When the second square sub-block rolls over the larger 1x2 sub-block then follows this sequence:
+Cuando el segundo sub-bloque cuadrado completa su ciclo, el sub-bloque mayor de 1x2 sigue esta secuencia:
 
 ![c0](imgs/c_0.png) ![c1](imgs/c_1.png) ![c2](imgs/c_2.png) ![c3](imgs/c_3.png) ![c4](imgs/c_4.png) ![c5](imgs/c_5.png) ![c6](imgs/c_6.png)
 
-The three sub-blocks symbols act as base 5, 5, and 7 digits. Once they've cycled through, 90 degree rotations are added to the first sub block. Then 90 degree to the second. Then 180 degree to the 3rd. Finally when all those rotations cycle the entire block is rotated by 90 degrees.
+Los símbolos de los tres sub-bloques actúan como dígitos en base 5, 5 y 7. Una vez que han completado su ciclo, se agregan rotaciones de 90 grados al primer sub-bloque, luego rotaciones de 90 grados al segundo y de 180 grados al tercero. Finalmente, cuando todas esas rotaciones completan su ciclo, el bloque completo rota en incrementos de 90 grados.
 
-In all a large block encodes a mixed-radix number of base 5, 5, 7, 4, 4, 2, 4 where the 5, 5, 7 part are the symbols of the three different sub-blocks, the 4, 4, 2 part are the rotations of the sub-blocks, and then the final 4 is the rotation of the whole block. This enables each large block to encode log(5 * 5 * 7 * 4 * 4 * 2 * 4) / log(27) = 3.039 base-27 digits. This is how the each large block is able to encode 3 letters at once. a = 1, b = 2, ... z = 26. The digit zero is skipped and is only used as padding in the case where fewer than 3 letters need to be encoded.
+En total, un bloque grande codifica un número de base mixta (5, 5, 7, 4, 4, 2, 4), donde la parte (5, 5, 7) corresponde a los símbolos de los tres sub-bloques, la parte (4, 4, 2) a las rotaciones de los sub-bloques, y el 4 final a la rotación del bloque completo. Esto permite que cada bloque grande codifique $\log(5 \times 5 \times 7 \times 4 \times 4 \times 2 \times 4) / \log(27) = 3.039$ dígitos en base 27. Así cada bloque grande codifica 3 letras simultáneamente ($a = 1, b = 2, \dots, z = 26$; el dígito cero se usa únicamente como relleno cuando hay menos de 3 letras).
 
-There is a circular mark in the border of the large-block which shows both the rotation of the large block, as well as whether the key digit has flipped the 1x2 sub-block with the two 1x1 square sub-blocks. The rotation of the large-block must be "undone" before reading the rotations of sub blocks. That is, the rotations "stack".
+Existe una marca semicircular en el borde del bloque grande que muestra tanto la rotación del bloque grande como si el dígito de la clave ha intercambiado el sub-bloque 1x2 con los dos sub-bloques cuadrados 1x1. La rotación del bloque grande debe deshacerse antes de leer las rotaciones de los sub-bloques.
 
-## Reading the key
+## Lectura de la clave
 
-By experimenting with the keys 1 through 4 you can determine that:
+Al experimentar con las claves del 1 al 4 se puede determinar que:
 
-- 1: no effect
-- 2: swap position of square sub-blocks
-- 3: swap 1x2 sub block with square sub-blocks
-- 4: Same effect as 2 and 3 (double swap)
+- 1: sin efecto
+- 2: intercambia la posición de los sub-bloques cuadrados
+- 3: intercambia el sub-bloque 1x2 con los sub-bloques cuadrados
+- 4: mismo efecto que 2 y 3 combinados (doble intercambio)
 
-Here is an annotated flag showing the key digit for every large block:
+Aquí se muestra la imagen de la flag anotada con el dígito de clave para cada bloque grande:
 
 ![key](imgs/key.png)
 
-As you can see, the key is "121314".
+Como se observa, la clave es "121314".
 
 
-## Reading the large-block rotation
+## Lectura de la rotación del bloque grande
 
-The half-circle bump in the border can be used to see how the whole block has been rotated. It starts at the top and rotates clockwise to the right, bottom, and finally left side.
+La muesca semicircular en el borde permite identificar cómo se ha rotado el bloque completo. Comienza en la parte superior y rota en sentido horario hacia la derecha, abajo y finalmente a la izquierda.
 
-Here is an annotated flag showing the rotation of the large blocks:
+Aquí se muestra la flag anotada con la rotación de los bloques grandes:
 ![large rotations](imgs/large_rotations.png)
 
-By chance, the final rotation value "3" isn't used because none of the 3-letter blocks end with high a enough letter in the alphabet to need it.
+Por casualidad, el valor de rotación final "3" no se utiliza porque ninguno de los bloques de 3 letras termina con una letra suficientemente alta en el alfabeto.
 
 
-## Reading the sub-blocks
+## Lectura de los sub-bloques
 
-The sub-blocks each contribute two digits. The first is the block number itself, and the second is the block rotation. It is easy to see at a glance which sub block each is. Seeing how they are rotated is a bit mind-bending as you first need to mentally "undo" the large block rotation.
+Cada sub-bloque aporta dos dígitos: el número de símbolo del bloque y su rotación. Es sencillo identificar a simple vista qué símbolo corresponde a cada sub-bloque; para determinar su rotación, primero debe deshacerse mentalmente la rotación del bloque grande.
 
-Here are all of the sub-blocks annotated with their number in large font, and their rotation in small font.
+A continuación se muestran todos los sub-bloques anotados con su número de símbolo en fuente grande y su rotación en fuente pequeña:
 
 ![sub block details](imgs/sub_block_notation.png)
 
@@ -139,13 +139,13 @@ Here are all of the sub-blocks annotated with their number in large font, and th
     print(f"CTF{{{w1}_{w2}_{w3}_{w4}_{w5}}}")
 
 
-Which when run results in the flag:
+Al ejecutarse, produce la flag configurada:
 
     $ ./decode_blocks.py
-    CTF{subterrenaceous_hyperencryption_misconfigurate_transmutational_deobfuscation}
+    DUOC{codificacion_radix_mixta_84619}
 
 
-## Alternative solution method
+## Método de solución alternativo
 
-Instead of fully understanding every detail of the encoding and doing math, players may simply observe that each block corresponds to 3 letters and then manually search / brute force each block one, at a time. As you get more familiarized with the magnitude of the effect each of the 3 letters has on the large block, it is possible to rather quickly narrow-in on the correct 3-letters. Once a bit of the word is already known, this can aid in more quickly helping to guess other portions of the word.
+En lugar de modelar matemáticamente cada detalle de la codificación, los participantes pueden observar que cada bloque corresponde a 3 letras y buscar o probar manualmente cada bloque de 3 letras utilizando el servicio web del desafío. Una vez que se conoce parte de una palabra, resulta más sencillo deducir los bloques restantes.
 

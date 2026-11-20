@@ -1,0 +1,16 @@
+[
+  {
+    "cert_id": "CT-2026-9910",
+    "common_name": "portal.andinacloud-lab.internal.edu",
+    "san": ["portal.andinacloud-lab.internal.edu", "api.andinacloud-lab.internal.edu"],
+    "spki_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "not_before": "2026-09-01T00:00:00Z"
+  },
+  {
+    "cert_id": "CT-2026-9942",
+    "common_name": "nodo-respaldo-andino.infra-sur.internal.edu",
+    "san": ["nodo-respaldo-andino.infra-sur.internal.edu", "dr-sync.andinacloud-lab.internal.edu"],
+    "spki_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "not_before": "2026-10-12T00:00:00Z"
+  }
+]

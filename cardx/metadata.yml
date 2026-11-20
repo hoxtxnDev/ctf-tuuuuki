@@ -10,7 +10,7 @@
 version: beta1
 name: cardx
 author: 'itsc0rg1 & symmetric'
-flag: 'CTF{plsverifynow}'
+flag: 'DUOC{matriz_puntos_amarillos_95173}'
 description: Can you authenticate these dragon cards?
 value: 1000
 tags:

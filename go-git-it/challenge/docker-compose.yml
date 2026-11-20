@@ -3,7 +3,7 @@ services:
     build:
       context: .
       args:
-        FLAG: "CTF{g0tt4_g!t_th4t}"
+        FLAG: "DUOC{historial_commits_expuesto_26491}"
     deploy:
       replicas: 1
     ports:

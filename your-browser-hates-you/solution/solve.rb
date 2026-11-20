@@ -12,7 +12,7 @@ if !out
   exit 1
 end
 
-if out.parsed_response =~ /(CTF{[^}]*})/
+if out.parsed_response =~ /(DUOC{[^}]*})/
   check_flag(::Regexp.last_match(0), terminate: true)
 else
   puts 'Did see anything flag-looking on the page!'

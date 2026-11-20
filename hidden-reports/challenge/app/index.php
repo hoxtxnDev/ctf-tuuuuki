@@ -63,7 +63,7 @@ function display_classified_dossier() {
         <div class="container">
             <div class="classified">
                 <h2>🐉 TOP SECRET: DRAGON INCURSION IMMINENT 🐉</h2>
-                <p><strong>Flag:</strong> <tt>CTF{select-or-one-equals-one}</tt></p>
+                <p><strong>Flag:</strong> <tt>DUOC{tautologia_booleana_sql_47289}</tt></p>
                 <p><strong>Codename:</strong> Operation Firestorm</p>
                 <p><strong>Threat Level:</strong> Apocalyptic</p>
                 <p><strong>ETA:</strong> 2025-04-15T18:00:00Z</p>

@@ -10,7 +10,7 @@
 version: "beta1"
 name: "hangman-one"
 author: "itsc0rg1"
-flag: "CTF{hangm4nw1thfr1end5andf03s}"
+flag: "DUOC{palabra_estatica_compartida_34982}"
 description: |
   Play hangman and guess the flag
 value: 1000 # Leave this as 1000 unless you have a reason to change it

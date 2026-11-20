@@ -1,0 +1,28 @@
+# Plantilla reutilizable para desafíos de OSINT Digital (Infraestructura / DNS / Certificados)
+version: 'beta1'
+name: 'plantilla-osint-digital'
+category: 'OSINT'
+difficulty: 'Intermedio'
+author: 'Equipo Docente Ciberseguridad DUOC'
+# NOTA: Esta es una flag de plantilla (sustituir al clonar para un nuevo evento)
+flag: 'DUOC{nodo_respaldo_andino_64512}'
+value: 1000
+tags:
+  - 'OSINT'
+  - 'DNS'
+  - 'Infraestructura'
+  - 'Plantilla'
+description: |
+  [PLANTILLA OSINT DIGITAL] El equipo de respuesta a incidentes recolectó volcados
+  pasivos de DNS, registros de transparencia de certificados (CT) y datos RDAP/ASN
+  de la organización ficticia "Andina Cloud Lab". Identifica el subdominio oculto de
+  respaldo y el número de sistema autónomo (ASN) donde se aloja.
+  Formato esperado: DUOC{<etiqueta_host>_<asn_numerico>}
+files:
+  - 'evidencias/zona_dns_pasiva.txt'
+  - 'evidencias/transparencia_certificados.json'
+  - 'evidencias/registro_rdap_asn.txt'
+hints:
+  - 'Nivel 1: Analiza evidencias/zona_dns_pasiva.txt y observa qué registros CNAME o TXT hacen referencia a entornos de contingencia.'
+  - 'Nivel 2: Revisa evidencias/transparencia_certificados.json para encontrar el subdominio que comparte el mismo hash de clave pública (SPKI) con el servidor principal.'
+  - 'Nivel 3: Cruza la dirección IP del subdominio de respaldo con evidencias/registro_rdap_asn.txt para obtener el número ASN (64512) y normaliza el nombre del nodo.'

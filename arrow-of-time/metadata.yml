@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'arrow-of-time'
 author: 'symmetric'
-flag: 'CTF{reverse_time_polarity}'
+flag: 'DUOC{ciclo_colision_brent_59184}'
 description: |
   The future is here, but can you use it to make sense of the present?
 value: 1000 # Leave this as 1000 unless you have a reason to change it

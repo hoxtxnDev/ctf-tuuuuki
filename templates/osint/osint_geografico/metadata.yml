@@ -1,0 +1,12 @@
+version: 'beta1'
+name: 'plantilla-osint-geografico'
+author: 'Equipo Docente Ciberseguridad DUOC'
+flag: 'DUOC{muelle_prat_valparaiso_23801}'
+description: |
+  [PLANTILLA OSINT GEOGRÁFICO] Identificación de ubicación a partir de referencias visuales y metadatos EXIF.
+value: 1000
+tags:
+  - 'OSINT'
+  - 'GEOINT'
+notes: |
+  Plantilla educativa reutilizable para creación de nuevos retos de geolocalización.

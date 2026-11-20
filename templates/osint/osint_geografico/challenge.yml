@@ -1,0 +1,25 @@
+# Plantilla reutilizable para desafíos de OSINT Geográfico (IMINT / GEOINT)
+version: 'beta1'
+name: 'plantilla-osint-geografico'
+category: 'OSINT'
+difficulty: 'Intermedio'
+author: 'Equipo Docente Ciberseguridad DUOC'
+# NOTA: Esta es una flag de plantilla (sustituir al clonar para un nuevo evento)
+flag: 'DUOC{muelle_prat_valparaiso_23801}'
+value: 1000
+tags:
+  - 'OSINT'
+  - 'GEOINT'
+  - 'Plantilla'
+description: |
+  [PLANTILLA OSINT GEOGRÁFICO] Un analista de campo envió una fotografía antes de
+  perder conexión junto con un volcado parcial de metadatos EXIF. Determina el punto
+  exacto de observación y el código postal del recinto portuario.
+  Formato esperado: DUOC{<recinto_normalizado>_<ciudad>_<codigo_postal>}
+files:
+  - 'evidencias/reporte_exif_captura.json'
+  - 'evidencias/bitacora_observacion_visual.txt'
+hints:
+  - 'Nivel 1: Revisa los metadatos EXIF en evidencias/reporte_exif_captura.json; aunque las coordenadas GPS fueron truncadas, el huso horario (UTC-3) y el ángulo acimutal de la brújula acotan la costa.'
+  - 'Nivel 2: Cruza los elementos arquitectónicos descritos en evidencias/bitacora_observacion_visual.txt (edificio aduanero histórico, grúas portuarias y funicular en el cerro contiguo).'
+  - 'Nivel 3: Identifica el muelle histórico de pasajeros de Valparaíso y concatena su nombre en minúsculas con guiones bajos seguido de su código postal de 5 dígitos.'

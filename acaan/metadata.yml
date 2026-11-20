@@ -1,7 +1,7 @@
 version: 'beta1'
 name: 'acaan'
 author: 'ron'
-flag: 'CTF{changing-memories}'
+flag: 'DUOC{escritura_memoria_proc_48291}'
 description: |
   This service listens on port 4113. When you connect, you send three things:
 

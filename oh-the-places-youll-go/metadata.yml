@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'oh-the-places-youll-go-1'
 author: 'symmetric & TheSorites'
-flag: 'CTF{i_kill_where_i_wish_and_none_dare_resist}'
+flag: 'DUOC{triangulacion_visual_urbana_78245}'
 description: |
   We've been getting around. Can you track us down?
 value: 1000 # Leave this as 1000 unless you have a reason to change it

@@ -10,7 +10,7 @@
 version: 'beta1'
 name: 'extinction'
 author: 'ron'
-flag: 'CTF{i-saved-the-dragons-and-all-i-got-was-this-stupid-flag}'
+flag: 'DUOC{maleabilidad_bits_base64_57294}'
 description: |
   A Dragon Doomsday weapon has been activated! We've stolen an account (`admin:admin`), but it's not working!! Can you evade their detection??
 

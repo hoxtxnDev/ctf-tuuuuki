@@ -1,1 +1,1 @@
-CTF{homomorphisms_for_the_win}
+DUOC{maleabilidad_aditiva_oraculo_89417}

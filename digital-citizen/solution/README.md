@@ -1,13 +1,13 @@
-This challenge implements a hardware flaw in a smartcard as detailed in the paper [Factoring RSA keys from certified smart cards:
-Coppersmith in the wild](https://www.iacr.org/archive/asiacrypt2013/82700341/82700341.pdf). One of the paper authors, Tanja Lange has a [video about the bit-pattern flaw](https://www.youtube.com/watch?v=00kBm4POXDw) and [another with some details about the Coppersmith attack](https://www.youtube.com/watch?v=42lKSiyHnDY).
+Este desafío implementa una vulnerabilidad de hardware en una tarjeta inteligente descrita en el artículo [Factoring RSA keys from certified smart cards:
+Coppersmith in the wild](https://www.iacr.org/archive/asiacrypt2013/82700341/82700341.pdf). Una de las autoras del artículo, Tanja Lange, tiene un [video sobre la falla de patrones de bits](https://www.youtube.com/watch?v=00kBm4POXDw) y [otro con detalles sobre el ataque de Coppersmith](https://www.youtube.com/watch?v=42lKSiyHnDY).
 
-Several hints have been dropped in the challeng, including the names of the smartcard chip and several of the author's of the paper.
+Se han incluido varias pistas en el desafío, como los nombres del chip de la tarjeta inteligente y varios de los autores del artículo.
 
-Players need to first figure out that when the "true" RNG is selected primes are often generated with a bit pattern. There are two ways they can easily do this. The first is to generate a key pair for themself and then using the private exponent provided they can factor n to find p and q. This is not the *intended* way but I've left it in just in case players don't think of the intended way.
+Los participantes primero deben descubrir que cuando se selecciona el generador de números aleatorios de hardware ("true" RNG), los primos suelen generarse con un patrón repetitivo de bits. Hay dos formas de identificarlo: la primera es generar un par de claves propio y, utilizando el exponente privado proporcionado, factorizar $n$ para hallar $p$ y $q$.
 
-The intended way is with "batch" GCD.
+La vía prevista es mediante "Batch GCD" (máximo común divisor por lotes).
 
-Players can collect a bunch of generated key modulii to spot the bit patterns. Using these commands in a loop:
+Los participantes pueden recolectar múltiples módulos de claves generadas para detectar los patrones de bits ejecutando estos comandos en bucle:
 
     genkey
     first
@@ -15,11 +15,11 @@ Players can collect a bunch of generated key modulii to spot the bit patterns. U
     true
     exit
 
-Then all pairs can be GCD'd to find that they often share prime factors. The included `gcd_mods.py` is an example of how to do this using the slow `O(N^2)` approach.
+Luego se calcula el MCD entre todos los pares para comprobar que comparten factores primos con frecuencia. El script incluido `gcd_mods.py` muestra cómo hacerlo mediante el enfoque cuadrático $O(N^2)$.
 
-Once a bunch of primes have been found, they must be studied to understand the bit patterns. A big shortcut is simply to find the paper which describes the details well.
+Una vez encontrados varios primos, se estudian sus representaciones binarias para comprender los patrones de bits (o bien se consulta directamente el artículo académico).
 
-The included `generate_all_pattern_primes.py` will produce all possible primes that don't have the extra errors in them. Thes primes can then be used via trial division to factor Citizen 0's key:
+El script incluido `generate_all_pattern_primes.py` genera todos los primos posibles que no presentan errores adicionales en sus bits inferiores. Estos primos pueden utilizarse mediante división por tentativa (`trial_division.py`) para factorizar la clave del Ciudadano 0:
 
 
     digital-citizen> listkeys
@@ -39,12 +39,12 @@ The included `generate_all_pattern_primes.py` will produce all possible primes t
     Welcome DJB(?), before we continue, you must prove it's you
     
     Please provide the signature for 230846000006996554864145385787482093092 : 125665049994521047592213989932197112873186687546276432005443406401430333613257634269589578348237799429135156121798275374508064683723621425513192280449451697910336729131939065229340964639715230843118143335090285527168417260573489854133322270651175328592279395638757537287483277830970735543163010551090957686203
-    Message 1: Dan, I think our smartcards may have errors... CTF{never_trust_a_black_box}
+    Message 1: Dan, I think our smartcards may have errors... DUOC{factores_primos_compartidos_38516}
 
 
-For part 2, players must identify that sometimes pattered primes have 48 random bits in the lower quarter. Following the paper, Coppersmith can be used
+Para la parte 2 (`digital-citizen-2`), los participantes deben identificar que en ocasiones los primos con patrón tienen 48 bits aleatorios en su cuarto inferior. Siguiendo el artículo, se puede emplear el método de Coppersmith.
 
-The provide Sage code `trial_coppersmith.sage` will try Coppersmith for every candidate pattern prime to find one that is close to the true prime:
+El código de Sage proporcionado en `trial_coppersmith.sage` prueba el método de Coppersmith sobre cada primo candidato con patrón hasta encontrar uno cercano al factor primo real:
 
     $ sage trial_coppersmith.sage ../challenge/all_prime_pats.txt be3890a7605bb8d1dd03cf5060b9eb02d110d34d966ee4b277b32bbbeb23563ae860273715a06c6c8a8cd5c2547fe6d0fdcac172fb40a42272aebf63a53e68eb11f905ae064af33d0a128214ba00130ec49efc6060789d3c481256fd3ee55c4e4f6634958e6271be458e1d8fbe8165f224133cb5a00ac2adc80967447fcc787f
     Will run coppersmith on be3890a7605bb8d1dd03cf5060b9eb02d110d34d966ee4b277b32bbbeb23563ae860273715a06c6c8a8cd5c2547fe6d0fdcac172fb40a42272aebf63a53e68eb11f905ae064af33d0a128214ba00130ec49efc6060789d3c481256fd3ee55c4e4f6634958e6271be458e1d8fbe8165f224133cb5a00ac2adc80967447fcc787f
@@ -53,7 +53,7 @@ The provide Sage code `trial_coppersmith.sage` will try Coppersmith for every ca
     q bits: 11000011001110000000011010000111011111111110101110110010111010101110111001100000100010000100110000111010000011100101011111110111010111110000111110101000101111000100001010110001011010001100110010001001111111101011000010001100100110101010111010111011011100100100101001011001101101010000110001000011101101000010011011101011001011100101110100110100100100101111010100001101100111100111001011110111001001011101100100011011011101000011101000100011101000010000001000110001010101110001011000110101001000001101001011010011
 
 
-Then using this factorization:
+Luego, utilizando esta factorización para firmar el desafío del Ciudadano 1:
 
     digital-citizen> readmsg
     
@@ -62,6 +62,6 @@ Then using this factorization:
     Welcome Coppersmith(?), before we continue, you must prove it's you
     
     Please provide the signature for 50270568158361420948375087748410436443 : 73163237629005064336312497586488848914405537328679620940037648182376013545742356025880857173376242622691981882220020358907385452998217039198141142167782200948108051680035638969869299687017803053006930384658283757222385290952137904610460001450381722518099218750515590971187687815369334678783770480232930580474
-    Message 1: Even when the HW RNG gets going it isn't secure CTF{for_bits_location_is_everything}
+    Message 1: Even when the HW RNG gets going it isn't secure DUOC{raices_pequenas_coppersmith_92647}
     
 

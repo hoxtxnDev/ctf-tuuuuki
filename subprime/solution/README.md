@@ -1,18 +1,13 @@
 # subprime
 
-This challenge focuses on the weaknesses of RSA if the initial prime numbers
-chosen are too small.
+Este desafío se centra en las debilidades criptográficas de RSA cuando los números primos iniciales elegidos son demasiado pequeños.
 
-## Solution
+## Solución
 
-1. Players receive a ciphertext of an array of integers along with a public key
-pair with the public exponent (e) and the modulus (n).
-2. If the initial prime numbers used, say p and q are small enough, a computer
-can easily derive them from the modulus (n) through prime factorization.
-3. After that it's simply a matter of retracing the steps of the RSA algorithm
-until each number in the ciphertext array is decoded.
-4. Looking at the range of decoded numbers, it's clear that they're ASCII
-encoded.
+1. Los participantes reciben un texto cifrado compuesto por un arreglo de enteros junto con una clave pública formada por el exponente público ($e$) y el módulo ($n$).
+2. Si los números primos iniciales $p$ y $q$ son lo suficientemente pequeños, una computadora puede derivarlos fácilmente a partir del módulo ($n$) mediante factorización prima.
+3. A continuación, basta con calcular $\phi(n) = (p-1)(q-1)$ y el exponente privado $d \equiv e^{-1} \pmod{\phi(n)}$ para descifrar cada entero del arreglo.
+4. Al observar el rango de los números descifrados, se comprueba que corresponden a códigos ASCII.
 
 Received n = 98563159, e = 1009
 
@@ -48,10 +43,8 @@ Decoding using Private Key (d=31545577, n=98563159)...
 
 Decoded message (numeric): [67, 84, 70, 123, 110, 48, 110, 95, 48, 112, 116, 33, 109, 64, 108, 95, 112, 82, 33, 109, 51, 36, 125]
 
-Plaintext: CTF{n0n_0pt!m@l_pR!m3$}
+Plaintext: DUOC{exponente_privado_factorizado_51739}
 
-## Resources
+## Recursos
 
-There are several online tools available for this kind of operation as long as
-the participant knows what they're looking for. For example,
-[BabyRSA](https://github.com/mrdebator/BabyRSA).
+Existen diversas herramientas de apoyo para comprender esta operación cuando los factores primos son pequeños, por ejemplo [BabyRSA](https://github.com/mrdebator/BabyRSA).

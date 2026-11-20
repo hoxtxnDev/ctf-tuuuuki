@@ -1,12 +1,9 @@
 # Magic
 
-The challenge name and prompt suggest there's something wrong with the magic
-bytes of the image, since it won't open.
+El nombre y la descripción del desafío sugieren que hay un problema con los "magic bytes" (firma de cabecera) de la imagen, razón por la cual no se puede abrir.
 
-You can use a tool like `xxd` or Bless to examine and edit the hex of the file. 
+Puedes utilizar una herramienta hexadecimal como `xxd` o `hexedit` para examinar y editar los primeros bytes del archivo.
 
-The first few bytes of a file are called "magic bytes" and they dictate the
-file's type. For PNG images, the header is supposed to be `8950 4e47`, however,
-`magic.png` starts with `616e 7368`. 
+Los primeros bytes de un archivo determinan su formato. Para imágenes PNG, la firma de cabecera debe comenzar con `8950 4e47` (`\x89PNG`), pero `magic.png` comienza con `616e 7368`.
 
-Changing the header to the correct magic bytes fixes the issue.
+Restaurar la cabecera con los magic bytes correctos de PNG permite abrir la imagen y obtener la flag (`DUOC{reparacion_firma_cabecera_76392}`).
