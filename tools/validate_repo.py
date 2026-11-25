@@ -19,9 +19,29 @@ import sys
 
 FLAG_REGEX = re.compile(r"^DUOC\{[a-z0-9_]*[0-9]+[a-z0-9_]*\}$")
 EXCLUDED_DIRS = {"tools", "templates", "docs"}
+CATEGORY_DIRS = [
+    "seguridad-web",
+    "criptografia",
+    "forense-y-esteganografia",
+    "explotacion-binaria",
+    "ingenieria-inversa",
+    "osint",
+    "seguridad-movil",
+    "ia-machine-learning",
+    "fisica-y-miscelaneos",
+]
 
 
 def get_challenge_dirs():
+    found = []
+    for cat in CATEGORY_DIRS:
+        if os.path.isdir(cat):
+            for d in sorted(os.listdir(cat)):
+                full = os.path.join(cat, d)
+                if os.path.isdir(full) and not d.startswith("."):
+                    found.append(full)
+    if found:
+        return sorted(found)
     return sorted(
         d for d in os.listdir(".")
         if os.path.isdir(d) and not d.startswith(".") and d not in EXCLUDED_DIRS
@@ -159,13 +179,15 @@ def main():
                     rb_count += 1
 
     # Ejecutar solver funcional offline de obscuratron y generador Base64 de cert-tool
-    res_obs = subprocess.run(["ruby", "obscuratron/solution/solve.rb"], capture_output=True, text=True)
+    obs_script = "ingenieria-inversa/obscuratron/solution/solve.rb" if os.path.exists("ingenieria-inversa/obscuratron/solution/solve.rb") else "obscuratron/solution/solve.rb"
+    res_obs = subprocess.run(["ruby", obs_script], capture_output=True, text=True)
     if res_obs.returncode != 0:
-        errors.append(f"Fallo en obscuratron/solution/solve.rb: {res_obs.stdout} {res_obs.stderr}")
+        errors.append(f"Fallo en {obs_script}: {res_obs.stdout} {res_obs.stderr}")
 
-    res_ct = subprocess.run(["python3", "cert-tool/solution/solve.py"], capture_output=True, text=True)
+    ct_script = "explotacion-binaria/cert-tool/solution/solve.py" if os.path.exists("explotacion-binaria/cert-tool/solution/solve.py") else "cert-tool/solution/solve.py"
+    res_ct = subprocess.run(["python3", ct_script], capture_output=True, text=True)
     if res_ct.returncode != 0 or "Y2F0IC9ob21lL2N0Zi9mbGFnLnR4dDsgI==j" not in res_ct.stdout:
-        errors.append(f"Fallo en cert-tool/solution/solve.py: {res_ct.stdout}")
+        errors.append(f"Fallo en {ct_script}: {res_ct.stdout}")
 
     print(f"[7/7] Pruebas automatizadas ejecutadas: {rb_count} scripts Ruby validados (`ruby -c`), solver XOR de `obscuratron` EXITOSO, generador de payload de `cert-tool` EXITOSO.")
 

@@ -4,7 +4,7 @@ CTFD_URL = "http://192.168.100.121"
 USUARIO = "lalalisa"
 CONTRASENA = "lalalisa"
 CHALL_ID = 2
-CARPETA = "subprime"
+CARPETA = "criptografia/subprime"
 
 s = requests.Session()
 s.headers.update({"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"})

@@ -5,7 +5,7 @@ CTFD_URL = "http://192.168.100.121"
 USERNAME = "lalalisa"
 PASSWORD = "lalalisa"
 
-CARPETA = "subprime"
+CARPETA = "criptografia/subprime"
 NOMBRE = "Subprime"
 CATEGORIA = "Crypto"
 DESCRIPCION = "Factoriza la clave RSA para recuperar la flag."
