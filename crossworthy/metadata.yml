@@ -3,7 +3,7 @@ name: 'crossworthy'
 author: 'ron'
 flag: 'DUOC{recompensa_vulnerabilidad_53918}'
 description: |
-  Solve the crossword in the program (or attached as PDF/HTML files)! The flag is 66 across (surrounded by `CTF{...}`)
+  Solve the crossword in the program (or attached as PDF/HTML files)! The flag is 66 across (`DUOC{recompensa_vulnerabilidad_53918}`)
 value: 1000
 tags:
   - 'Misc'

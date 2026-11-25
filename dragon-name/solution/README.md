@@ -1,14 +1,13 @@
 La aplicación Android genera la flag dentro de la función `createFlag()`, la cual realiza lo siguiente:
 ```
  fun createFlag(): String {
-        val part1 = rot13("PGS")
-        val b64 = Base64.Default.decode("dzNhaw==")
+        val part1 = rot13("QHPB")
+        val b64 = Base64.Default.decode("ZGViaWxpZGFkXw==")
         val part2 = b64.decodeToString()
-        val x = 10 % 2
-        val part3 = "T$x"
+        val part3 = "elemental_"
         val part4 = resources.getString(R.string.part4)
-        val y = if (2 < 3) 3 else 0
-        val part5 = "Typ$y"
+        val y = if (2 < 3) 45928 else 0
+        val part5 = "_$y"
         val flag = "$part1{$part2$part3$part4$part5}"
         return flag
   }
@@ -17,30 +16,31 @@ La aplicación Android genera la flag dentro de la función `createFlag()`, la c
 
 A continuación se detalla lo que hace la función paso a paso:
 ## Parte 1
-"PGS" está codificado con ROT13.
-'P' + 13 = 'C'
-'G' + 13 = 'T'
-'S' + 13 = 'F'
-Por lo tanto, `part1` ("PGS" tras aplicar ROT13) es "CTF".
+"QHPB" está codificado con ROT13.
+'Q' - 13 = 'D'
+'H' + 13 = 'U'
+'P' - 13 = 'O'
+'B' + 13 = 'C'
+Por lo tanto, `part1` ("QHPB" tras aplicar ROT13) es "DUOC".
 
 ## Parte 2
-La cadena Base64 "dzNhaw==" se decodifica a "w3ak".
-Por lo tanto, `part2` es "w3ak".
+La cadena Base64 "ZGViaWxpZGFkXw==" se decodifica a "debilidad_".
+Por lo tanto, `part2` es "debilidad_".
 
 
 ## Parte 3
-El código construye la cadena "T0" (`10 % 2 == 0`).
-Por lo tanto, `part3` es "T0".
+El código define la cadena "elemental_".
+Por lo tanto, `part3` es "elemental_".
 
 ## Parte 4
 `getResources().getString(R.string.part4):`
-Recupera el recurso de cadena con identificador `R.string.part4`, cuyo valor es "Fa1ry".
-Por lo tanto, `part4` es "Fa1ry".
+Recupera el recurso de cadena con identificador `R.string.part4`, cuyo valor es "hada".
+Por lo tanto, `part4` es "hada".
 
 ## Parte 5
-"Typ" + 3:
-El código construye la cadena "Typ3".
-Por lo tanto, `part5` es "Typ3".
+"_" + 45928:
+El código construye la cadena "_45928".
+Por lo tanto, `part5` es "_45928".
 
 ## Flag 
 
@@ -206,7 +206,7 @@ El código concatena todas las partes para formar la flag (cuyo valor oficial es
 ```
 * La cadena `part4` se encuentra definida en `res/values/strings.xml`
 ```
-<string name="part4">Fa1ry</string>
+<string name="part4">hada</string>
 ```
 
 ### Android Studio 

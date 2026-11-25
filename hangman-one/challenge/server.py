@@ -39,7 +39,7 @@ csrf = CSRFProtect(app)
 # Database setup
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.sqlite"
 db = SQLAlchemy(app)
-game_word = "hangm4nw1thfr1end5andf03s"
+game_word = "palabra_estatica_compartida_34982"
 
 # Game state 
 class StateType(enum.Enum):
@@ -171,7 +171,7 @@ def home():
     # Initial values 
     msg_arr = ["Starting new game","Game in progress","Congrats you won!","Game over. You lost :("]
     # Populate the alphanumeric button grid 
-    alphabets = list(string.ascii_lowercase + string.digits)
+    alphabets = list(string.ascii_lowercase + string.digits + '_')
     # Get the current user's game state
     user = User.query.filter_by(id=current_user.id).one_or_none()
     if user is None:
@@ -254,7 +254,7 @@ def process_letter(letter):
         return "Invalid guess, only single AlphaNumeric characters allowed", True 
     if 'a' <= letter <= 'z' or 'A' <= letter <= 'Z':
         return letter.lower(), False
-    elif '0' <= letter <= '9':
+    elif '0' <= letter <= '9' or letter == '_':
         return letter, False 
     else:
         return "Invalid guess, only single AlphaNumeric characters allowed", True

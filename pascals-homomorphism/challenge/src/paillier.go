@@ -27,7 +27,7 @@ var (
 
 const (
 	dec_lim = 2000
-	weak_prime = 96
+	weak_prime = 160
 	strong_prime = 512
 )
 

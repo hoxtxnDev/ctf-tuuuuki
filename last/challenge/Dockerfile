@@ -32,6 +32,7 @@ USER 1001
 EXPOSE 3000
 
 ENV PORT=3000
+ENV CTF_FLAG="DUOC{cabecera_subrequest_interna_82537}"
 
 ENV HOSTNAME="0.0.0.0"
 CMD ["node", "server.js"]

@@ -80,6 +80,15 @@ A continuación se muestran todos los sub-bloques anotados con su número de sí
     
     def n_to_trip(n):
     
+        if n >= 19683:
+            n -= 19683
+            d1 = n % 11
+            n //= 11
+            d2 = n % 11
+            n //= 11
+            d3 = n
+            return (chr(ord('0') + d1 - 1) if d1 else '') + (chr(ord('0') + d2 - 1) if d2 else '') + (chr(ord('0') + d3 - 1) if d3 else '')
+
         l1num = n % 27
         n //= 27
         l2num = n % 27
@@ -100,43 +109,26 @@ A continuación se muestran todos los sub-bloques anotados con su número de sí
         return word
     
     
-    w1_bll = [(4, 3, 4, 3, 2, 0, 0),
-              (2, 0, 6, 3, 2, 0, 2),
-              (4, 1, 1, 3, 2, 1, 1),
-              (2, 0, 2, 1, 1, 1, 0),
-              (3, 1, 3, 2, 0, 1, 2)]
+    w1_bll = [(4, 4, 6, 2, 0, 1, 0),
+              (2, 1, 3, 2, 1, 0, 1),
+              (2, 3, 4, 0, 3, 0, 0),
+              (0, 4, 4, 0, 3, 1, 1)]
     w1 = decode_word(w1_bll)
     
-    w2_bll = [(2, 4, 3, 2, 1, 0, 2),
-              (1, 2, 4, 3, 1, 1, 0),
-              (2, 3, 3, 3, 2, 0, 2),
-              (2, 2, 6, 1, 1, 1, 2),
-              (0, 4, 4, 0, 3, 1, 1)]
+    w2_bll = [(1, 2, 6, 0, 0, 1, 0),
+              (2, 1, 5, 3, 0, 0, 0)]
     w2 = decode_word(w2_bll)
     
-    w3_bll = [(2, 1, 4, 0, 0, 1, 2),
-              (4, 2, 4, 0, 3, 1, 1),
-              (2, 0, 4, 2, 3, 1, 0),
-              (1, 2, 0, 3, 1, 0, 0),
-              (0, 1, 6, 0, 0, 0, 0)]
+    w3_bll = [(2, 0, 3, 1, 1, 0, 3),
+              (2, 4, 1, 0, 0, 0, 0)]
     w3 = decode_word(w3_bll)
     
-    w4_bll = [(0, 2, 0, 3, 1, 0, 0),
-              (4, 0, 1, 1, 2, 1, 1),
-              (0, 3, 2, 3, 1, 0, 0),
-              (3, 4, 6, 3, 3, 1, 1),
-              (4, 2, 1, 2, 0, 1, 1)]
+    w4_bll = [(4, 3, 4, 1, 1, 1, 3),
+              (0, 4, 0, 1, 0, 1, 3)]
     w4 = decode_word(w4_bll)
     
-    w5_bll = [(4, 4, 1, 3, 3, 1, 1),
-              (3, 4, 2, 0, 2, 1, 2),
-              (4, 0, 5, 0, 1, 0, 0),
-              (3, 4, 6, 3, 3, 1, 1),
-              (4, 2, 0, 0, 0, 0, 0)]
-    w5 = decode_word(w5_bll)
     
-    
-    print(f"CTF{{{w1}_{w2}_{w3}_{w4}_{w5}}}")
+    print(f"DUOC{{{w1}_{w2}_{w3}_{w4}}}")
 
 
 Al ejecutarse, produce la flag configurada:

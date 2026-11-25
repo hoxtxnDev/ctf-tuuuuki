@@ -32,7 +32,7 @@ Across
 60	503, in Ancient Rome	diii
 63	Type of firmware update (abbr.)	ota
 64	Writer in a monestary	scribe
-66	The reward you get for finding and reporting what's in the circled letters (also the flag)	bugbounty
+66	The reward you get for finding and reporting what's in the circled letters (also the flag: DUOC{recompensa_vulnerabilidad_53918})	bugbounty
 68	Having lotsa soap bubbles	sudsy
 69	Herbal supplement used as a cold remedy	echinacea
 70	Highschool exams with a max score of 1600	sats

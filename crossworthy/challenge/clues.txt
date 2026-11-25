@@ -32,7 +32,7 @@ Across
 60	503, in Ancient Rome
 63	Type of firmware update (abbr.)
 64	Writer in a monestary
-66	The reward you get for finding and reporting what's in the circled letters (also the flag)
+66	The reward you get for finding and reporting what's in the circled letters (also the flag: DUOC{recompensa_vulnerabilidad_53918})
 68	Having lotsa soap bubbles
 69	Herbal supplement used as a cold remedy
 70	Highschool exams with a max score of 1600

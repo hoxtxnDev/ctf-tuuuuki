@@ -98,7 +98,7 @@ def main():
         print('E.g, python3 solution.py http://127.0.0.1:8000')
         exit()
     url = sys.argv[1]
-    flag = 'hangm4nw1thfr1end5andf03s'
+    flag = 'palabra_estatica_compartida_34982'
     # Set-up your main user
     with requests.Session() as session:
         while True:

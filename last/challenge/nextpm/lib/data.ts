@@ -64,13 +64,12 @@ async function flagKeybag({username, password}: {username: string, password: str
 
 async function getFlagValue(): Promise<string> {
   if ('CTF_FLAG' in process.env) {
-    return process.env.CTF_FLAG || "";
+    return process.env.CTF_FLAG || "DUOC{cabecera_subrequest_interna_82537}";
   }
   if ('CTF_FLAG_FILE' in process.env) {
     return fs.readFileSync(process.env.CTF_FLAG_FILE || "", {
       encoding: "utf-8",
     });
   }
-  console.log("no flag found");
-  return "";
+  return "DUOC{cabecera_subrequest_interna_82537}";
 }

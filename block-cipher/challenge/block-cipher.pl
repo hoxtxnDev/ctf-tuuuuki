@@ -130,7 +130,7 @@ while (<STDIN>) {
                 $got_get = 0;
             }
 
-            if ($uri =~ m/words=([a-z ]+)/) {
+            if ($uri =~ m/words=([a-z0-9 ]+)/) {
                 $words = $1
             } else {
                 if ($DEBUG == 1) {
@@ -395,6 +395,14 @@ sub word_to_numlist {
 sub trip_to_num {
     my $trip = shift;
 
+    if ($trip =~ m/[0-9]/) {
+        my $n = 19683;
+        $n += dig_to_num(substr($trip, 0, 1));
+        $n += dig_to_num(substr($trip, 1, 1)) * 11;
+        $n += dig_to_num(substr($trip, 2, 1)) * 11 * 11;
+        return $n;
+    }
+
     my $n = 0;
     $n += let_to_num(substr($trip, 0, 1));
     $n += let_to_num(substr($trip, 1, 1)) * 27;
@@ -405,6 +413,17 @@ sub trip_to_num {
     }
 
     return $n;
+}
+
+
+sub dig_to_num {
+    my $d = shift;
+
+    if ($d =~ m/^[0-9]$/) {
+        return (ord($d) - ord('0')) + 1;
+    } else {
+        return 0;
+    }
 }
 
 

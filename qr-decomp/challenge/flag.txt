@@ -1,9 +1,9 @@
 "DUOC{producto_matricial_ortogonal_64928}"
 
-CTF{
-punn
-y_co
-des}
+DUOC{
+prod
+ucto_
+64928}
 
 67 84 70 123 112 117 110 110 121 95 99 111 100 101 115 125
 

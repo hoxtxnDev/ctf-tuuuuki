@@ -4,4 +4,4 @@
 * Intencionalmente se conservaron los caracteres `{` y `}` sin cifrar.
 * De este modo, los participantes pueden identificar las letras del prefijo de la flag de inmediato.
 * Buscar palabras frecuentes en inglés (`A, I, an, and, the, in`) permite descifrar el resto del pergamino.
-* La palabra clave descifrada en el pergamino es `viridian`, que corresponde a la flag configurada `DUOC{sustitucion_runas_esmeralda_81354}`.
+* El conjuro descifrado en el pergamino concluye directamente con la flag configurada `DUOC{sustitucion_runas_esmeralda_81354}`.

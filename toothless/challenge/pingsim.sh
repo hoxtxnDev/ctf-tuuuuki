@@ -18,7 +18,7 @@ for (( i=1; i<=$NUM_PAIRS; i++ )); do
         -S "$SRC_IP" \
         --icmp-id "$ICMP_ID" \
         --icmp-seq "$i" \
-        --data-string "Q1RGe3kwdV91czNsM3NzX3IzcHQxbDN9" \
+        --data-string "RFVPQ3tjYXJnYV9pY21wX2h1ZXJmYW5hXzY4MzUyfQ==" \
         "$DST_IP" \
         --quiet
     fi

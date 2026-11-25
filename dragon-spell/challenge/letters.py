@@ -36,6 +36,12 @@ def replace_letters_with_pngs(input_text, png_extension=".png"):
         elif char == "}":
             png_filename = os.path.join("Curly-close" + png_extension)
             output_images = image_append(png_folder + png_filename, output_images)
+        elif char == "_":
+            png_filename = os.path.join("Underscore" + png_extension)
+            output_images = image_append(png_folder + png_filename, output_images)
+        elif '0' <= char <= '9':
+            png_filename = os.path.join(char + png_extension)
+            output_images = image_append(png_folder + png_filename, output_images)
         # When new line, generate the image
         elif char == "\n":
             print(text)

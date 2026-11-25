@@ -13,7 +13,7 @@
 #include <sys/wait.h>
 #include <sys/user.h>
 
-#define FLAG_LENGTH 30
+#define FLAG_LENGTH 34
 // #define FLAG_LENGTH 5
 
 int main(int argc, char *argv[]);

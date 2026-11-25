@@ -2,7 +2,7 @@ require_relative 'libronsolve'
 
 EXE = File.join(__dir__, '..', 'challenge', 'src', 'bug-me')
 if `#{ EXE } \"#{ expected_flag() }\"` =~ /YAY/
-  if `#{ EXE } \"cTF{hope-you-enjoyed-this-one}\"` =~ /YAY/
+  if `#{ EXE } \"dUOC{residuos_teorema_chino_62841}\"` =~ /YAY/
     raise 'Uh oh, a bad flag worked!'
   end
 

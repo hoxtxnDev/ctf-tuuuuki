@@ -25,14 +25,13 @@ class MainActivity : ComponentActivity() {
 
     @OptIn(ExperimentalEncodingApi::class)
     fun createFlag(): String {
-        val part1 = rot13("PGS")
-        val b64 = Base64.Default.decode("dzNhaw==")
+        val part1 = rot13("QHPB")
+        val b64 = Base64.Default.decode("ZGViaWxpZGFkXw==")
         val part2 = b64.decodeToString()
-        val x = 10 % 2
-        val part3 = "T$x"
+        val part3 = "elemental_"
         val part4 = resources.getString(R.string.part4)
-        val y = if (2 < 3) 3 else 0
-        val part5 = "Typ$y"
+        val y = if (2 < 3) 45928 else 0
+        val part5 = "_$y"
         val flag = "$part1{$part2$part3$part4$part5}"
         return flag
     }
