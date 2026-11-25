@@ -9,6 +9,7 @@ Repositorio integral de ciberseguridad educativa, auditoría defensiva y diseño
 1. [Resumen Ejecutivo del Contenido](#1-resumen-ejecutivo-del-contenido)
 2. [Arquitectura y Estructura del Repositorio](#2-arquitectura-y-estructura-del-repositorio)
 3. [Estándar Institucional de Flags](#3-estándar-institucional-de-flags)
+   - [3.1 Desafíos Modificados que Serán Utilizados en la Competencia](#31-desafíos-modificados-que-serán-utilizados-en-la-competencia)
 4. [Catálogo Completo de los 57 Desafíos por Categoría](#4-catálogo-completo-de-los-57-desafíos-por-categoría)
    - [4.1 Seguridad Web (15 desafíos)](#41-seguridad-web-15-desafíos)
    - [4.2 Criptografía (11 desafíos)](#42-criptografía-11-desafíos)
@@ -83,6 +84,39 @@ DUOC{palabra_clave_XXXXX}
 - **Composición:** Prefijo `DUOC{`, cierre `}`, texto en minúsculas separado por guiones bajos (`_`) que describe el hallazgo técnico interno del ejercicio y un bloque numérico aleatorio de 5 dígitos (o el identificador numérico deducible en desafíos OSINT).
 - **Unicidad total:** Las **63 flags** del repositorio (57 de retos + 3 de plantillas OSINT + 3 señuelos Canary) son 100% únicas y sin colisiones.
 - **Sincronización integral (Código ↔ Distfiles ↔ Solución):** Todos los códigos fuente, bases de datos SQLite, repositorios Git expuestos, paquetes APK de Android, capturas de red PCAP, documentos PDF cifrados, archivos comprimidos e imágenes esteganográficas de competencia entregan exactamente la misma flag `DUOC{...}` documentada en `metadata.yml` y `solution/README.md`.
+
+### 3.1 Desafíos Modificados que Serán Utilizados en la Competencia
+
+A continuación se listan los **26 desafíos modificados, reconstruidos y auditados** (con artefactos `challenge/` y `distfiles/` sincronizados 1 a 1 con su solución y protección pasiva Anti-IA / Devanagari BPE) que **serán utilizados** en la competencia:
+
+| # | Desafío | Categoría | Flag Oficial (`DUOC{...}`) | Modificaciones Aplicadas (Código / Distfiles / Protección Anti-IA) |
+|---|---|---|---|---|
+| 1 | [`hidden-reports`](hidden-reports/README.md) | Seguridad Web | `DUOC{tautologia_booleana_sql_47289}` | Flag en `index.php` + **Señuelo HTML pasivo en Hindi (Devanagari BPE $\times 5$)** (`CANARY-01`) + Blueprint Tarpit |
+| 2 | [`taxonomy`](taxonomy/README.md) | Seguridad Web | `DUOC{evasion_filtro_clasificado_24861}` | Base de datos SQLite `dragons.db` y `dragons.sql` sincronizados + **Señuelo HTML pasivo en Hindi (Devanagari BPE $\times 5$)** (`CANARY-02`) |
+| 3 | [`go-git-it`](go-git-it/README.md) | Seguridad Web | `DUOC{historial_commits_expuesto_26491}` | Historial `.git` (`flag.html` en commit inicial) regenerado + **Señuelo HTML pasivo en Hindi (Devanagari BPE $\times 5$)** (`CANARY-03`) |
+| 4 | [`hangman-one`](hangman-one/README.md) | Seguridad Web | `DUOC{palabra_estatica_compartida_34982}` | `game_word` y soporte de `_` en `server.py`, prefijo `DUOC{` en `home.html`, solver `solution.py` + Blueprint ReAct Nonce |
+| 5 | [`last`](last/README.md) | Seguridad Web | `DUOC{cabecera_subrequest_interna_82537}` | Variable `ENV CTF_FLAG` en `Dockerfile` y valor por defecto en `nextpm/lib/data.ts` |
+| 6 | [`subprime`](subprime/README.md) | Criptografía | `DUOC{exponente_privado_factorizado_51739}` | `distfiles/cipher.txt` recifrado con RSA ($e=1009, n=98563159$), `solution/README.md` + Blueprint CoT Sink |
+| 7 | [`block-cipher`](block-cipher/README.md) | Criptografía | `DUOC{codificacion_radix_mixta_84619}` | `block-cipher.pl` actualizado, `distfiles/flag.png` regenerado y `decode_blocks.py` sincronizado |
+| 8 | [`cipher-block-corruption`](cipher-block-corruption/README.md) | Criptografía | `DUOC{cabecera_png_sin_iv_41827}` | `challenge/flag.png` renderizado y `distfiles/flag.png.enc` recifrado con AES-128-CBC |
+| 9 | [`dragon-spell`](dragon-spell/README.md) | Criptografía | `DUOC{sustitucion_runas_esmeralda_81354}` | Glifos adicionales en `png_letters/`, `letters.py` y pergamino `distfiles/Dragon-Spell.png` regenerados |
+| 10 | [`pascals-homomorphism`](pascals-homomorphism/README.md) | Criptografía | `DUOC{factorizacion_modulo_debil_35792}` | `paillier.go` y `flag_1.txt` sincronizados |
+| 11 | [`pascals-homomorphism-2`](pascals-homomorphism-2/README.md) | Criptografía | `DUOC{maleabilidad_aditiva_oraculo_89417}` | `paillier.go` y `flag_2.txt` sincronizados |
+| 12 | [`qr-decomp`](qr-decomp/README.md) | Criptografía | `DUOC{producto_matricial_ortogonal_64928}` | `challenge/flag.txt` y documentación de descomposición QR sincronizados |
+| 13 | [`bug-me`](bug-me/README.md) | Ingeniería Inversa | `DUOC{residuos_teorema_chino_62841}` | `FLAG_LENGTH=34` en `bug-me.c`, binario ELF `distfiles/bug-me` actualizado con 34 funciones CRT y `solve.rb` |
+| 14 | [`flag-search`](flag-search/README.md) | Ingeniería Inversa | `DUOC{poda_backtracking_bits_49182}` | `flag-search.c` actualizado con ciphertext AES-128-ECB de 3 bloques y `search.py` sincronizado |
+| 15 | [`obscuratron`](obscuratron/README.md) | Ingeniería Inversa | `DUOC{flujo_xor_encadenado_94716}` | `memo.pdf` regenerado con flag `DUOC{...}` y `distfiles/memo.pdf.enc` recifrado con flujo XOR (`0xab`) |
+| 16 | [`dragon-name`](dragon-name/README.md) | Seguridad Móvil | `DUOC{debilidad_elemental_hada_45928}` | `MainActivity.kt`, `strings.xml` y paquete `distfiles/dragon-name.apk` reconstruido con `apktool` |
+| 17 | [`toothless`](toothless/README.md) | Forense / Redes | `DUOC{carga_icmp_huerfana_68352}` | `pingsim.sh` y paquete ICMP seq 29 en `distfiles/toothless.pcap` actualizados con Base64 `RFVPQ3...` |
+| 18 | [`magic`](magic/README.md) | Forense Digital | `DUOC{reparacion_firma_cabecera_76392}` | `original.png` renderizado y `distfiles/magic.png` generado con cabecera alterada (`ansh`) |
+| 19 | [`nearest-neighbor`](nearest-neighbor/README.md) | Forense / Estego | `DUOC{interpolacion_submuestreo_28594}` | `bliss_flag_256x192.png` y `solution/flag_visible.png` actualizados |
+| 20 | [`ruthless-dot-flag`](ruthless-dot-flag/README.md) | Forense / Estego | `DUOC{decodificacion_pixel_rgb555_17385}` | `bsides_logo_with_flag1.png` renderizado y `distfiles/flags.r16` (RGB555) regenerado |
+| 21 | [`ruthless-dot-flag-2`](ruthless-dot-flag-2/README.md) | Forense / Estego | `DUOC{extraccion_bit_transparencia_83942}` | `flag2.png` incrustado en el bit MSB (canal alfa) de `distfiles/flags.r16` |
+| 22 | [`slackblock-steg`](slackblock-steg/README.md) | Forense / Estego | `DUOC{relleno_bloques_dimension_72518}` | `distfiles/flag.jpg` regenerado con bits ocultos en los píxeles de holgura del bloque JPEG $8\times 8$ |
+| 23 | [`tarnation`](tarnation/README.md) | Forense Digital | `DUOC{ocurrencia_archivo_concatenado_96284}` | `real_flag/flag.jpg`, `flag.tar` y archivo concatenado `distfiles/tarnation.tar.xz` reconstruidos |
+| 24 | [`matryoshkafs`](matryoshkafs/README.md) | Forense Digital | `DUOC{particiones_anidadas_multiple_54829}` | Imagen `challenge/flag.heic` actualizada con flag oficial |
+| 25 | [`crossworthy`](crossworthy/README.md) | Misceláneo | `DUOC{recompensa_vulnerabilidad_53918}` | `metadata.yml`, `clues.txt`, `crossworthy2025.txt`, `.ipuz` y `distfiles/crossworthy2025.html` sincronizados |
+| 26 | [`oh-say-can-you-see`](oh-say-can-you-see/README.md) / [`oh-the-places-youll-go`](oh-the-places-youll-go/README.md) | IA/ML y OSINT | `DUOC{inversion_gradiente_red_43681}` / `DUOC{triangulacion_visual_urbana_78245}` | Imágenes objetivo `true_flag.png`, `class_2.png`, `flag_1.jpg` y `flag_2.jpg` actualizadas |
 
 ---
 

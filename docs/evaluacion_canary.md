@@ -26,3 +26,13 @@ Todos los marcadores cumplen con las siguientes garantías de seguridad:
 ## 3. Verificación de Aislamiento
 
 La suite [`tools/validate_repo.py`](../tools/validate_repo.py) comprueba automáticamente que ninguna de las 3 flags señuelo registradas en `docs/canary_registry.json` aparezca en los archivos `metadata.yml` de los desafíos legítimos del CTF.
+
+---
+
+## 4. Blueprints Anti-IA 2026 Anotados (Inactivos / Solo Documentación)
+
+Se dejaron anotados (comentados y **sin ejecución activa**) tres mecanismos de estado del arte 2025–2026 de ofuscación y agotamiento de presupuesto de tokens (*Token & Reasoning Sinks*) en tres desafíos representativos:
+
+1. **[`hidden-reports/challenge/app/index.php`](../hidden-reports/challenge/app/index.php) — *Nepenthes / Iocaine / Cloudflare AI Labyrinth (Context-Window Token Sink)*:** Laberinto determinista de paginación $4^n$ con volcados pseudo-SQL de alta entropía (24 KB / ~6.000 tokens por página) que satura la ventana de contexto de un agente en pocas peticiones.
+2. **[`hangman-one/challenge/server.py`](../hangman-one/challenge/server.py) — *Recursive Compliance & Nonce-Drift Trap (ReAct Loop)*:** Handshake de 3 pasos que induce reintentos infinitos en agentes ReAct devolviendo errores de desfase de reloj (`clock_skew_14ms`) con instrucciones de recalibración.
+3. **[`subprime/solution/README.md`](../subprime/solution/README.md) — *Chain-of-Thought & Compute Sink (Partially-Factorable Decoy Modulus)*:** Módulo señuelo compuesto por factores pequeños de 24 bits (recompensa falsa temprana) multiplicados por un semiprimo duro de 384 bits que bloquea los hilos de cómputo y tokens de razonamiento del modelo.
