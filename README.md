@@ -23,7 +23,7 @@ Repositorio integral de ciberseguridad educativa, auditoría defensiva y diseño
 5. [Plantillas Reutilizables de OSINT (`templates/osint/`)](#5-plantillas-reutilizables-de-osint-templatesosint)
 6. [Módulo Pasivo de Integridad Académica — Canary Tokens (`docs/` y `templates/canary_samples/`)](#6-módulo-pasivo-de-integridad-académica--canary-tokens-docs-y-templatescanary_samples)
 7. [Herramientas de Automatización y Auditoría (`tools/`)](#7-herramientas-de-automatización-y-auditoría-tools)
-8. [Guía de Despliegue y Creación de Nuevos Desafíos](#8-guía-de-despliegue-y-creación-de-nuevos-desafíos)
+8. [Guía de Despliegue, Administración en CTFd y Creación de Nuevos Desafíos](#8-guía-de-despliegue-administración-en-ctfd-y-creación-de-nuevos-desafíos)
 9. [Consideraciones de Seguridad y Uso Ético](#9-consideraciones-de-seguridad-y-uso-ético)
 
 ---
@@ -266,15 +266,18 @@ Implementa un sistema **100% pasivo y estático** de marcadores señuelo para ev
 
 ---
 
-## 8. Guía de Despliegue y Creación de Nuevos Desafíos
+## 8. Guía de Despliegue, Administración en CTFd y Creación de Nuevos Desafíos
+
+> [!IMPORTANT]
+> **Guía Completa de Administración en CTFd:** Consulta [`docs/GUIA_ADMIN_CTFD.md`](docs/GUIA_ADMIN_CTFD.md) para ver el instructivo paso a paso sobre cómo cargar los desafíos en la interfaz web de administrador de CTFd (`/admin/challenges/new`), cómo usar los scripts de carga automática (`subir_uno.py` y `subir_archivos.py`), qué archivos adjuntar de `distfiles/`, qué puertos publicar en Docker y cómo monitorear en CTFd las flags señuelo de los honeypots Anti-IA.
 
 ### Ejecutar un desafío existente con Docker
 ```bash
 # Para desafíos con docker-compose.yml:
-cd <nombre-del-reto>/challenge && docker compose up --build
+cd <categoria>/<nombre-del-reto>/challenge && docker compose up -d --build
 
 # Para desafíos con Dockerfile estándar:
-cd <nombre-del-reto>/challenge && docker build -t ctf-<reto> . && docker run --rm -it -P ctf-<reto>
+cd <categoria>/<nombre-del-reto>/challenge && docker build -t ctf-<reto> . && docker run -d --restart unless-stopped -P ctf-<reto>
 ```
 
 ### Crear un nuevo desafío a partir de una plantilla OSINT
