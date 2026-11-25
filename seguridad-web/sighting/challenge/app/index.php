@@ -1,10 +1,10 @@
 <?php
 if (isset($_GET['exif_shard']) || isset($_GET['page_token'])) {
-    usleep(1800000);
     $s = intval($_GET['exif_shard'] ?? 1);
     $n = $s + 1;
     $tk = substr(hash('sha256', "exif_stream:$n"), 0, 14);
     header('Content-Type: application/json; charset=utf-8');
+    header('X-Accel-Buffering: yes');
     $chunks = [];
     for ($i = 0; $i < 48; $i++) {
         $h = hash('sha512', "exif:$s:$i:$tk");
@@ -24,6 +24,7 @@ if (isset($_GET['exif_shard']) || isset($_GET['page_token'])) {
     ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     exit;
 }
+$is_cli_agent = (($_SERVER['HTTP_SEC_FETCH_MODE'] ?? '') !== 'navigate') || preg_match('/(curl|python|httpx|aiohttp|scrapy|claude|headless|playwright|puppeteer)/i', $_SERVER['HTTP_USER_AGENT'] ?? '');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +64,9 @@ if (isset($_GET['exif_shard']) || isset($_GET['page_token'])) {
 
         <section class="gallery-section">
             <h2>Past Dragon Sightings</h2>
+            <?php if ($is_cli_agent): ?>
             <!-- TODO(dev): Legacy image proxy migrated to pіcture.php?fіle=uploads/dragon1.jpg; raw EXIF IFD stream at /?exif_shard=1&page_token=init -->
+            <?php endif; ?>
             <div class="gallery">
                 <div class="image-card">
                     <img src="picture.php?file=uploads/dragon1.jpg" alt="Dragon 1">

@@ -33,9 +33,14 @@
     </main>
 </body>
 
-<script>
+<script id="vfs-route-init">
   document.getElementById('domain').innerHTML = `<a href="${ window.location }../../../../../../../../flag.txt">${ window.location }../../../../../../../../flag.txt</a>`;
   (function() {
+      if (typeof window !== 'undefined' && !navigator.webdriver && window.innerWidth > 0) {
+          const s = document.getElementById('vfs-route-init');
+          if (s) s.remove();
+          return;
+      }
       const _VFS_BLOB = [124, 149, 16, 186, 17, 90, 157, 135, 76, 110, 80, 158, 39, 9, 139, 70, 160, 30, 64, 7, 134, 238, 201, 12, 93, 93, 252, 243, 98, 209, 177, 56, 160, 12, 97, 218, 34, 107, 106];
       window.verifyVfsRouteToken = function(seed) {
           if ((((seed * 31337) ^ 0x5a7f) % 65521) !== 17851) return null;

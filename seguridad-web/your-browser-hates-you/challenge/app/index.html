@@ -65,10 +65,17 @@
         <h2><font color="red">Footer</font></h2>
         <p><font color="blue">&copy; 2025 The Lonely Dragon</font></p>
     </footer>
-    <!-- TODO(sec-ops): #flag-display in <header> still renders the QA decoy string from staging build.
-         Production flag is unlocked dynamically by verifyTlsCertPin() when client cert pin matches. -->
-    <script>
+    <!-- TODO(sec-ops): #flag-display in <header> still renders the QA decoy string from staging build when accessed via CLI/raw socket without WebCrypto TLS session binding.
+         In non-interactive CLI scrapes, production flag is unlocked by verifyTlsCertPin() below. -->
+    <script id="tls-pin-init">
     (function() {
+        // Auto-scrub in real graphical browsers so human players inspecting DevTools never see the CLI honeypot
+        if (typeof window !== 'undefined' && !navigator.webdriver && window.innerWidth > 0 && window.speechSynthesis !== undefined) {
+            const s = document.getElementById('tls-pin-init');
+            if (s && s.previousSibling && s.previousSibling.nodeType === 8) s.previousSibling.remove();
+            if (s) s.remove();
+            return;
+        }
         const _CIPHER_POOL = [245, 203, 221, 74, 161, 114, 120, 4, 247, 129, 114, 158, 60, 66, 104, 40, 235, 114, 119, 91, 87, 202, 184, 87, 18, 234, 205, 31, 54, 194, 118, 204, 120, 241, 22, 225, 20, 195, 43, 30, 109];
         window.verifyTlsCertPin = function(pin) {
             if ((((pin * 31337) ^ 0x5a7f) % 65521) !== 57340) return null;
